@@ -66,3 +66,39 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+项目搭建：
+
+1.暂定安装依赖包：antd  	axios 	fetch	 less	 less-loader 	node-sass 	sass-loader 	react-redux	 react-router-dom	 react-transition-group	 redux redux-saga	 redux-thunk 
+
+2.修改webpack配置文件：可以自定义ant-design主题颜色，按需自动引入UI库的css
+
+3.项目技术：
+
+​	3.1 css样式采用Less
+
+​	3.2 状态管理用react-redux 辅助 redux
+
+​	3.3 异步处理用redux-thunk / redux-saga 两者二选一
+
+​	3.4 后台管理采用ant-design UI库：按需引入组件即可，不用引css文件（第2点已处理）
+
+ 	3.5 数据交互采用axios / fetch 二选一
+
+​	3.6 路由react-router-dom
+
+4. 目录介绍
+
+     4.1  components -->  公共组件
+
+     4.2  pages --> 前后台页面
+
+     4.3  nomatch --> 404页面
+
+     4.4  system  --> 后台
+
+     4.5  src目录下的store --> 总的store
+
+     4.6  可以在每个页面中创建一个store ，利于管理数据。
+
+   5.yarn   /   npm install     --> yarn start   直接启用即可打开页面
