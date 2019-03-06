@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import {actionCreator} from './store';
 import './style.less';
 import { Tabs, Icon, Checkbox, Button, Form, Input } from 'antd';
 const TabPane = Tabs.TabPane;
@@ -16,28 +17,25 @@ const formItemLayout = {
   }
 };
 class Login extends Component {
-  callback = key => {
-    console.log(key);
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: '',
-      pwd: ''
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     userName: '',
+  //     pwd: ''
+  //   };
+  // }
   onChange = e => {
     console.log(`checked = ${e.target.checked}`);
   };
 
-  onChangeUserName = e => {
-    this.setState({ userName: e.target.value });
-  };
-  onChangePwd = e => {
-    this.setState({ pwd: e.target.value });
-  };
+  // onChangeUserName = e => {
+  //   this.setState({ userName: e.target.value });
+  // };
+  // onChangePwd = e => {
+  //   this.setState({ pwd: e.target.value });
+  // };
   render() {
-    const { userName, pwd } = this.state;
+    // const { userName, pwd } = this.state;
     return (
       <Fragment>
         <header className="header-title">
@@ -45,8 +43,8 @@ class Login extends Component {
         </header>
         <div className="login-wrapper">
           <Tabs
+          //默认页签的key值
             defaultActiveKey="1"
-            onChange={this.callback}
             style={{
               background: '#fff',
               paddingBottom: '30px',
@@ -63,8 +61,8 @@ class Login extends Component {
                   prefix={
                     <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  value={userName}
-                  onChange={this.onChangeUserName}
+                  value={this.props.userName}
+                  onChange={this.props.onChangeUserName}
                   ref={node => (this.userNameInput = node)}
                 />
                 <Input
@@ -73,7 +71,7 @@ class Login extends Component {
                   prefix={
                     <Icon type="key" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  value={pwd}
+                  // value={pwd}
                   onChange={this.onChangePwd}
                   ref={node => (this.pwdInput = node)}
                 />
@@ -137,13 +135,19 @@ class Login extends Component {
   }
 }
 const mapStateToProps = state => {
-  return {};
+  return {
+    userName:state.getIn(['header','userName'])
+  };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    handleClickLoginIn(){
-      console.log(this.props);
+    onChangeUserName(e){
+      dispatch(actionCreator.inputchange(e.target.value));
+      console.log(12);
     }
+    // handleClickLoginIn(){
+    //   console.log(this.props);
+    // }
   };
 };
 export default connect(
