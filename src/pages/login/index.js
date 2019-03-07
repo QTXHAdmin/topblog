@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import {actionCreator} from './store';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { actionCreator } from './store';
 import './style.less';
 import { Tabs, Icon, Checkbox, Button, Form, Input } from 'antd';
 const TabPane = Tabs.TabPane;
@@ -17,25 +18,10 @@ const formItemLayout = {
   }
 };
 class Login extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     userName: '',
-  //     pwd: ''
-  //   };
-  // }
   onChange = e => {
     console.log(`checked = ${e.target.checked}`);
   };
-
-  // onChangeUserName = e => {
-  //   this.setState({ userName: e.target.value });
-  // };
-  // onChangePwd = e => {
-  //   this.setState({ pwd: e.target.value });
-  // };
   render() {
-    // const { userName, pwd } = this.state;
     return (
       <Fragment>
         <header className="header-title">
@@ -43,7 +29,7 @@ class Login extends Component {
         </header>
         <div className="login-wrapper">
           <Tabs
-          //默认页签的key值
+            //默认页签的key值
             defaultActiveKey="1"
             style={{
               background: '#fff',
@@ -61,9 +47,9 @@ class Login extends Component {
                   prefix={
                     <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  value={this.props.userName}
+                  // value={this.props.userName}
                   onChange={this.props.onChangeUserName}
-                  ref={node => (this.userNameInput = node)}
+                  ref={node => {this.userNameInput = node}}
                 />
                 <Input
                   style={{ width: '80%', marginBottom: '20px' }}
@@ -71,11 +57,16 @@ class Login extends Component {
                   prefix={
                     <Icon type="key" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  // value={pwd}
-                  onChange={this.onChangePwd}
-                  ref={node => (this.pwdInput = node)}
+                  // value={this.props.userPwd}
+                  onChange={this.props.onChangePwd}
+                  ref={node =>{ this.pwdInput = node}}
                 />
-                <Button type="primary" onClick={this.handleClickLoginIn}><Link to="/home">登录</Link></Button>
+                <br/>
+                {/* 如何配合请求数据成功跳转 */}
+                <Button type="primary" onClick={()=>this.props.handleClickLoginIn(this.userNameInput,this.pwdInput)}>
+                  {/* <Link to="/home">登录</Link> */}
+                  登录
+                </Button>
               </div>
             </TabPane>
             <TabPane tab="注册账号" key="2">
@@ -136,17 +127,21 @@ class Login extends Component {
 }
 const mapStateToProps = state => {
   return {
-    userName:state.getIn(['header','userName'])
+    userName: state.getIn(['header', 'userName']),
+    userPwd: state.getIn(['header', 'userPwd'])
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onChangeUserName(e){
-      dispatch(actionCreator.inputchange(e.target.value));
-      console.log(12);
-    }
-    // handleClickLoginIn(){
-    //   console.log(this.props);
+    onChangeUserName(e) {
+      dispatch(actionCreator.changeusername(e.target.value));
+    },
+    onChangePwd(e) {
+      dispatch(actionCreator.changeuserpwd(e.target.value));
+    },
+    // handleClickLoginIn(userNameInput,pwdInput) {
+    //   console.log(userNameInput.value,pwdInput.value);
+    //   dispatch(actionCreator.login(userNameInput.value,pwdInput.value));
     // }
   };
 };
