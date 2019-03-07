@@ -1,7 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import './style.less';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { actionCreator as loginActionCreators } from '../login/store';
 class Home extends Component {
   render() {
+    const { login, logout } = this.props;
     return (
       <Fragment>
         <header className="header">
@@ -25,10 +29,16 @@ class Home extends Component {
             <div className="input-wrap">
               <input type="text" placeholder="搜Topblog" className="search" />
               <ul className="right-menu clearfix">
-                <li>写博客</li>
+                <Link to="/myblog"><li>写博客</li></Link>
                 <li>赚零钱</li>
                 <li>消息</li>
-                <li>登录</li>
+                {login ? (
+                  <li onClick={logout}>退出</li>
+                ) : (
+                  <Link to="/login">
+                    <li>登录</li>
+                  </Link>
+                )}
                 <li>
                   <span>头像</span>
                 </li>
@@ -55,17 +65,15 @@ class Home extends Component {
             <div className="wrapper clearfix">
               <div className="main-content">
                 <div className="ad">{/* <img src="" alt=""/> */}</div>
-                <div className="swiper">
-                  {/* <img src="" alt=""/> */}
-                </div>
+                <div className="swiper">{/* <img src="" alt=""/> */}</div>
                 <ul className="item-wrap">
                   <li>
                     <h3>标题</h3>
                     <p>主题</p>
                     <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
+                      <span>头像|姓名</span>
+                      <span>分类</span>
+                      <span>时间</span>
                     </div>
                     <div className="count-wrap">
                       <span>阅读数 |</span>
@@ -76,94 +84,15 @@ class Home extends Component {
                     <h3>标题</h3>
                     <p>主题</p>
                     <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
+                      <span>头像|姓名</span>
+                      <span>分类</span>
+                      <span>时间</span>
                     </div>
                     <div className="count-wrap">
                       <span>阅读数 |</span>
                       <span>评论数</span>
                     </div>
                   </li>
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                    <span>头像|姓名</span>
-                    <span>分类</span>
-                    <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                  
                 </ul>
               </div>
               <div className="right-nav" />
@@ -175,4 +104,19 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    login: state.getIn(['login', 'login'])
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    logout() {
+      dispatch(loginActionCreators.logout());
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

@@ -1,24 +1,28 @@
 import * as constants from './constants';
 import axios from 'axios';
-export const changeusername = (value) =>({
-  type:constants.CHANGE_USER_NAME,
-  value
+const changeLogin = () => ({
+  type: constants.CHANGE_LOGIN,
+  value: true
 });
-export const changeuserpwd = (value) =>({
-  type:constants.CHANGE_USER_PWD,
-  value
+export const logout = () => ({
+  type: constants.LOGOUT,
+  value: false
 });
-// export const getlogininfo = (value) =>{
-//   return (dispatch)=>{
-//     axios.get('/user.json')
-//       .then(res=>{
-//         if(res.data.code ===1){
-//           //跳转页面
-//           console.log(111);
-//         }
-//       })
-//       .catch(err=>{
-//         console.log('登录失败');
-//       })
-//   }
-// };
+export const login = (obj) => {
+  return dispatch => {
+   
+    // axios.get('/api/login.json?account=' + account + '&password=' + password)
+      // .get('192.168.0.222:8088' + account + '&password=' + password)
+      axios.post('http://192.168.0.222:8088/login',obj)
+      .then(res => {
+        console.log(11);
+        const result = res.data;
+        console.log(result);
+        if (result.code === 0) {
+          dispatch(changeLogin());
+        } 
+      }).catch(err=>{
+        console.log(err);
+      })
+  };
+};
