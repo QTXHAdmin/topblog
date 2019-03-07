@@ -1,1 +1,2 @@
-export const INPUT_CHANGE = 'header/input_change';
+export const CHANGE_LOGIN = 'login/change_login';
+export const LOGOUT = 'login/logout';
