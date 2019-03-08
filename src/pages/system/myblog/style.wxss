@@ -2,10 +2,8 @@
   height: 140px;
   width: 100%;
   background-color: #232E3C;
-
-  .myBlogwrap {
-    width: 1214px;
-    margin: 0 auto;
-  }
-
+}
+.myBlogNav .myBlogwrap {
+  width: 1214px;
+  margin: 0 auto;
 }

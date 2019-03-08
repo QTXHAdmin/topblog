@@ -1,17 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import './style.less';
 class Myblog extends Component {
   render() {
-    const { loginStatus} = this.props;
-    if(loginStatus){
+    const { loginStatus } = this.props;
+    if (loginStatus) {
       return (
-        <div>
-          写博客
-        </div>
+        <Fragment>
+          <div className="myBlogNav">
+            <div className="myBlogwrap">
+              <h3>zhengzheng的博客</h3>
+              <button>管理博客</button>
+            </div>
+          </div>
+        </Fragment>
       );
-    }else{
-      return <Redirect to="/login" />
+    } else {
+      return <Redirect to="/login" />;
     }
   }
 }
@@ -21,9 +27,7 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => {
-  return {
-   
-  };
+  return {};
 };
 export default connect(
   mapStateToProps,
