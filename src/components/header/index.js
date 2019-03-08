@@ -27,8 +27,14 @@ class Header extends Component {
                       <li>登录</li>
                     </Link>
                   )}
-                  <li>
+                  <li className="userinfo">
                     <span>头像</span>
+                    <ul className="usermanage">
+                      <li>我的博客</li>
+                      <li>管理博客</li>
+                      <li>个人中心</li>
+                      <li>退出</li>
+                    </ul>
                   </li>
                 </ul>
               </div>

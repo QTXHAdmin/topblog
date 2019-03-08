@@ -4,9 +4,17 @@ const changeLogin = () => ({
   type: constants.CHANGE_LOGIN,
   value: true
 });
-const registuser = () => ({
+const registeuser = () => ({
   type: constants.REGIS_LOGIN,
   value: true
+});
+export const usernamechange = (value) => ({
+  type: constants.USER_NAME_CHANGE,
+  value
+});
+export const passwordchange = (value) => ({
+  type: constants.PASS_WROD_CHANGE,
+  value
 });
 export const logout = () => ({
   type: constants.LOGOUT,
@@ -28,14 +36,13 @@ export const login = obj => {
       });
   };
 };
-export const regiest = obj => {
+export const registe = obj => {
   return dispatch => {
     axios.post('http://192.168.0.222:8088/login/createUser', obj).then(res => {
-      //  console.log(res);
       const result = res.data;
       if (result.code === 0) {
         console.log('添加用户成功');
-        dispatch(registuser());
+        dispatch(registeuser());
       }
     });
   };

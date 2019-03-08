@@ -1,85 +1,175 @@
 import React, { Component, Fragment } from 'react';
 import './style.less';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../../components/header';
 import { connect } from 'react-redux';
-
+import { Carousel } from 'antd';
 class Home extends Component {
   render() {
     return (
       <Fragment>
-          <Header />
-          <div className="header-nav-wrap ">
-            <div className="main ">
-              <div className="logo-wrap ">
-                {/* <img src="" alt=""/> */}
-                <span>Logoimg</span>
-                <ul className="left-menu ">
-                  <Link to="/home"><li>html</li></Link>
-                  <Link to="/home"><li>css</li></Link>
-                  <Link to="/home"><li>javascript</li></Link>
-                  <Link to="/home"><li>jquery</li></Link>
-                  <Link to="/home"><li>bootstrap</li></Link>
-                  <Link to="/home"><li>nodejs</li></Link>
-                  <Link to="/home"><li>exporess</li></Link>
-                  <Link to="/home"><li>vue</li></Link>
-                  <Link to="/home"><li>webpack</li></Link>
-                  <Link to="/home"><li>react</li></Link>
+        <Header />
+        <div className="header-nav-wrap ">
+          <div className="main ">
+            <div className="logo-wrap ">
+              {/* <img src="" alt=""/> */}
+              <span>Logoimg</span>
+              <ul className="left-menu ">
+                <Link to="/home">
+                  <li>首页</li>
+                </Link>
+                <Link to="/home">
+                  <li>关于</li>
+                </Link>
+                <Link to="/home">
+                  <li>留言板</li>
+                </Link>
+                <Link to="/home">
+                  <li>评论</li>
+                </Link>
+                <Link to="/home">
+                  <li>交流群</li>
+                </Link>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="content">
+          <div className="main">
+            <div className="content-left">
+              <ul className="left-nav ">
+                <Link to="/home">
+                  <li>html</li>
+                </Link>
+                <Link to="/home">
+                  <li>css</li>
+                </Link>
+                <Link to="/home">
+                  <li>javascript</li>
+                </Link>
+                <Link to="/home">
+                  <li>jquery</li>
+                </Link>
+                <Link to="/home">
+                  <li>bootstrap</li>
+                </Link>
+                <Link to="/home">
+                  <li>nodejs</li>
+                </Link>
+                <Link to="/home">
+                  <li>exporess</li>
+                </Link>
+                <Link to="/home">
+                  <li>vue</li>
+                </Link>
+                <Link to="/home">
+                  <li>webpack</li>
+                </Link>
+                <Link to="/home">
+                  <li>react</li>
+                </Link>
+              </ul>
+            </div>
+            <div className="content-right">
+              <div className="swiper">
+                <Carousel autoplay>
+                  <div>
+                    <h3>1</h3>
+                  </div>
+                  <div>
+                    <h3>2</h3>
+                  </div>
+                  <div>
+                    <h3>3</h3>
+                  </div>
+                  <div>
+                    <h3>4</h3>
+                  </div>
+                </Carousel>
+              </div>
+              <div className="blog-list-wrap">
+                <ul className="blog-list">
+                  <li>
+                    <h3>我在阿里做了5年招聘</h3>
+                    <p>
+                      前阵子，我和阿里的薪酬福利专家M同学聊了一下午，M同学做了9年薪酬，和我们吐槽了很多薪酬方面的现象，
+                    </p>
+                    <div className="bottom-wrap">
+                      <div className="bottom-left">
+                        <Link to="/home">
+                          <span>头像 zhanghe</span>
+                        </Link>
+                        <Link to="/home">
+                          <span>程序人生</span>
+                        </Link>
+                        <span className="timer">1天前</span>
+                      </div>
+                      <div className="bottom-right">
+                        <Link to="/home">
+                          <span>阅读数 : 200</span>
+                        </Link>
+
+                        <Link to="/home">
+                          <span>评论数 : 300</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3>我在阿里做了5年招聘</h3>
+                    <p>
+                      前阵子，我和阿里的薪酬福利专家M同学聊了一下午，M同学做了9年薪酬，和我们吐槽了很多薪酬方面的现象，
+                    </p>
+                    <div className="bottom-wrap">
+                      <div className="bottom-left">
+                        <Link to="/home">
+                          <span>头像 zhanghe</span>
+                        </Link>
+                        <Link to="/home">
+                          <span>程序人生</span>
+                        </Link>
+                        <span className="timer">1天前</span>
+                      </div>
+                      <div className="bottom-right">
+                        <Link to="/home">
+                          <span>阅读数 : 200</span>
+                        </Link>
+
+                        <Link to="/home">
+                          <span>评论数 : 300</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3>我在阿里做了5年招聘</h3>
+                    <p>
+                      前阵子，我和阿里的薪酬福利专家M同学聊了一下午，M同学做了9年薪酬，和我们吐槽了很多薪酬方面的现象，
+                    </p>
+                    <div className="bottom-wrap">
+                      <div className="bottom-left">
+                        <Link to="/home">
+                          <span>头像 zhanghe</span>
+                        </Link>
+                        <Link to="/home">
+                          <span>程序人生</span>
+                        </Link>
+                        <span className="timer">1天前</span>
+                      </div>
+                      <div className="bottom-right">
+                        <Link to="/home">
+                          <span>阅读数 : 200</span>
+                        </Link>
+
+                        <Link to="/home">
+                          <span>评论数 : 300</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
-          </div>
-        <div className="content">
-          <div className="main">
-            {/* <div className="left-nav">
-              <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-              </ul>
-            </div> */}
-            {/* <div className="wrapper clearfix">
-              <div className="main-content">
-                <div className="ad">{/* <img src="" alt=""/> </div>
-                <div className="swiper">{/* <img src="" alt=""/> </div> */}
-                {/* <ul className="item-wrap">
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                      <span>头像|姓名</span>
-                      <span>分类</span>
-                      <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>标题</h3>
-                    <p>主题</p>
-                    <div className="userinfo">
-                      <span>头像|姓名</span>
-                      <span>分类</span>
-                      <span>时间</span>
-                    </div>
-                    <div className="count-wrap">
-                      <span>阅读数 |</span>
-                      <span>评论数</span>
-                    </div>
-                  </li>
-                </ul> */}
-              {/* </div> */}
-              {/* <div className="right-nav" /> */}
-            {/* </div> */}
           </div>
         </div>
       </Fragment>
@@ -88,17 +178,10 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    // login: state.getIn(['login', 'login'])
-  };
+  return {};
 };
 const mapDispatchToProps = dispatch => {
-  return {
-    // logout() {
-    //   sessionStorage.clear();
-    //   dispatch(loginActionCreators.logout());
-    // }
-  };
+  return {};
 };
 export default connect(
   mapStateToProps,
