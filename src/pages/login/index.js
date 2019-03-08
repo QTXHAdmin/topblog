@@ -1,156 +1,240 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import {actionCreator} from './store';
+import { Redirect } from 'react-router-dom';
+import { actionCreator } from './store';
 import './style.less';
-import { Tabs, Icon, Checkbox, Button, Form, Input } from 'antd';
+import { Tabs, Icon, Checkbox, Button, Form, Input, Radio } from 'antd';
 const TabPane = Tabs.TabPane;
-
+const FormItem = Form.Item;
+const RadioGroup = Radio.Group;
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 5 }
+    sm: { span: 4 }
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 12 }
+    sm: { span: 18 }
   }
 };
 class Login extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     userName: '',
-  //     pwd: ''
-  //   };
-  // }
   onChange = e => {
     console.log(`checked = ${e.target.checked}`);
   };
-
-  // onChangeUserName = e => {
-  //   this.setState({ userName: e.target.value });
-  // };
-  // onChangePwd = e => {
-  //   this.setState({ pwd: e.target.value });
-  // };
   render() {
-    // const { userName, pwd } = this.state;
-    return (
-      <Fragment>
-        <header className="header-title">
-          <h1>欢迎登录</h1>
-        </header>
-        <div className="login-wrapper">
-          <Tabs
-          //默认页签的key值
-            defaultActiveKey="1"
-            style={{
-              background: '#fff',
-              paddingBottom: '30px',
-              width: '30%',
-              margin: '50px auto 0'
-            }}
-          >
-            <TabPane tab="账号登录" key="1">
-              <div className="input-border">
-                <p className="prompt-msg">如果您有我们的帐户，请登录！</p>
-                <Input
-                  style={{ width: '80%', marginBottom: '20px' }}
-                  placeholder="输入用户名"
-                  prefix={
-                    <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
-                  }
-                  value={this.props.userName}
-                  onChange={this.props.onChangeUserName}
-                  ref={node => (this.userNameInput = node)}
-                />
-                <Input
-                  style={{ width: '80%', marginBottom: '20px' }}
-                  placeholder="输入密码"
-                  prefix={
-                    <Icon type="key" style={{ color: 'rgba(0,0,0,.25)' }} />
-                  }
-                  // value={pwd}
-                  onChange={this.onChangePwd}
-                  ref={node => (this.pwdInput = node)}
-                />
-                <Button type="primary" onClick={this.handleClickLoginIn}><Link to="/home">登录</Link></Button>
-              </div>
-            </TabPane>
-            <TabPane tab="注册账号" key="2">
-              <p className="prompt-msg">新用户</p>
-              <Form {...formItemLayout}>
-                <div className="form-wrapper">
-                  <Form.Item
-                    label="用户名"
-                    validateStatus="error"
-                    help="字母数字结合"
-                    hasFeedback
-                  >
-                    <Input placeholder="输入用户名" id="error" />
-                  </Form.Item>
-                  <Form.Item
-                    label="密码"
-                    validateStatus="warning"
-                    hasFeedback
-                    help="字母数字结合"
-                  >
-                    <Input placeholder="输入密码" id="warning" />
-                  </Form.Item>
-
-                  <Form.Item
-                    label="密码"
-                    validateStatus="warning"
-                    help="字母数字结合"
-                  >
-                    <Input placeholder="再次输入密码" id="validating" />
-                  </Form.Item>
-                  <Form.Item label="电话" hasFeedback validateStatus="success">
-                    <Input placeholder="输入电话" id="success" />
-                  </Form.Item>
-
-                  <Form.Item
-                    label="邮箱"
-                    hasFeedback
-                    validateStatus="validating"
-                  >
-                    <Input placeholder="输入邮箱地址" id="warning2" />
-                  </Form.Item>
+    const { loginStatus } = this.props;
+    const { getFieldDecorator } = this.props.form;
+    if (!loginStatus) {
+      return (
+        <Fragment>
+          <header className="header-title">
+            <h1>欢迎登录</h1>
+          </header>
+          <div className="login-wrapper">
+            <Tabs
+              //默认页签的key值
+              defaultActiveKey="1"
+              style={{
+                background: '#fff',
+                paddingBottom: '30px',
+                width: '30%',
+                margin: '50px auto 0'
+              }}
+            >
+              <TabPane tab="账号登录" key="1">
+                <div className="input-border">
+                  <Form>
+                    <p className="prompt-msg">如果您有我们的帐户，请登录！</p>
+                    <FormItem label="用户名" {...formItemLayout}>
+                      {getFieldDecorator('userName', {
+                        initialValue: '',
+                        rules: [
+                          {
+                            required: true,
+                            message: '用户名不能为空'
+                          },
+                          {
+                            message: '请输入用户名长度5-12',
+                            min: 5,
+                            max: 12
+                          },
+                          {
+                            pattern: new RegExp('^\\w+$', 'g'),
+                            message: '用户名必须为字母或者数字'
+                          }
+                        ]
+                      })(
+                        <Input
+                          style={{ width: '80%', marginBottom: '20px' }}
+                          placeholder="输入用户名"
+                          prefix={
+                            <Icon
+                              type="user"
+                              style={{ color: 'rgba(0,0,0,.25)' }}
+                            />
+                          }
+                          ref={input => {
+                            this.account = input;
+                          }}
+                        />
+                      )}
+                    </FormItem>
+                    <FormItem label="密码" {...formItemLayout}>
+                      {getFieldDecorator('password', {
+                        initialValue: '',
+                        rules: [
+                          {
+                            required: true,
+                            message: '用户名不能为空'
+                          },
+                          {
+                            message: '请输入用户名长度5-12',
+                            min: 5,
+                            max: 12
+                          },
+                          {
+                            pattern: new RegExp('^\\w+$', 'g'),
+                            message: '用户名必须为字母或者数字'
+                          }
+                        ]
+                      })(
+                        <Input
+                          style={{ width: '80%', marginBottom: '20px' }}
+                          placeholder="输入密码"
+                          prefix={
+                            <Icon
+                              type="lock"
+                              style={{ color: 'rgba(0,0,0,.25)' }}
+                            />
+                          }
+                          type="password"
+                          ref={input => {
+                            this.password = input;
+                          }}
+                        />
+                      )}
+                    </FormItem>
+                    <br />
+                    <FormItem className="btn-wrap">
+                      {getFieldDecorator('remember', {
+                        valuePropName: 'checked',
+                        initialValue: true
+                      })(
+                        <Checkbox style={{ float: 'left' }}>记住密码</Checkbox>
+                      )}
+                      <Button style={{ float: 'right', marginRight: '40px' }}>
+                        忘记密码?
+                      </Button>
+                    </FormItem>
+                    <Button
+                      type="primary"
+                      className="loginbtn"
+                      onClick={() =>
+                        this.props.Login(
+                          this.account,
+                          this.password,
+                          this.props.form
+                        )
+                      }
+                    >
+                      登录
+                    </Button>
+                  </Form>
                 </div>
-                <Checkbox
-                  onChange={this.onChange}
-                  style={{ marginBottom: '20px' }}
-                >
-                  同意注册
-                </Checkbox>
-                <br />
-                <Button type="primary">注册</Button>
-              </Form>
-            </TabPane>
-          </Tabs>
-        </div>
-      </Fragment>
-    );
+              </TabPane>
+              <TabPane tab="注册账号" key="2">
+                <div className="input-border">
+                  <p className="prompt-msg">新用户</p>
+                  <Form>
+                    <div className="form-wrapper">
+                      <FormItem label="用户名" {...formItemLayout}>
+                        {getFieldDecorator('regusername', {
+                          initialValue: '',
+                          rules: [
+                            {
+                              required: true,
+                              message: '用户名不能为空'
+                            }
+                          ]
+                        })(
+                          <Input
+                            style={{ width: '80%', marginBottom: '20px' }}
+                            placeholder="请输入用户名"
+                          />
+                        )}
+                      </FormItem>
+                      <FormItem label="密码" {...formItemLayout}>
+                        {getFieldDecorator('reguserpwd', {
+                          initialValue: '',
+                          rules: [
+                            {
+                              required: true,
+                              message: '用户名不能为空'
+                            }
+                          ]
+                        })(
+                          <Input
+                            style={{ width: '80%', marginBottom: '20px' }}
+                            placeholder="请输入用户名"
+                          />
+                        )}
+                      </FormItem>
+                      <FormItem label="性别" {...formItemLayout}>
+                        {getFieldDecorator('sex', {
+                          initialValue: '1'
+                        })(
+                          <RadioGroup>
+                            <Radio value="1">男</Radio>
+                            <Radio value="2">女</Radio>
+                          </RadioGroup>
+                        )}
+                      </FormItem>
+                    </div>
+                    <Checkbox
+                      onChange={this.onChange}
+                      style={{ marginBottom: '20px' }}
+                    >
+                      同意注册
+                    </Checkbox>
+                    <br />
+                    <Button type="primary" onClick={()=>this.props.Regiest()}>注册</Button>
+                  </Form>
+                </div>
+              </TabPane>
+            </Tabs>
+          </div>
+        </Fragment>
+      );
+    } else {
+      return <Redirect to="/" />;
+    }
   }
 }
 const mapStateToProps = state => {
   return {
-    userName:state.getIn(['header','userName'])
+    loginStatus: state.getIn(['login', 'login'])
   };
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    onChangeUserName(e){
-      dispatch(actionCreator.inputchange(e.target.value));
-      console.log(12);
-    }
-    // handleClickLoginIn(){
-    //   console.log(this.props);
-    // }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  Login(accountElem, passwordElem, form) {
+    form.validateFields(['userName','password'], err => {
+      if (!err) {
+        // 查看控制台找到想要的属性
+        let obj = {
+          userName: accountElem.state.value,
+          password: passwordElem.state.value
+        };
+        dispatch(actionCreator.login(obj));
+      }
+    });
+  },
+  //注册功能
+  Regiest(){
+    
+  }
+});
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(Form.create()(Login));
