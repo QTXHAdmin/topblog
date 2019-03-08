@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" render={ () => <Redirect to="/home"></Redirect> }></Route>
+          <Route path="/" exact render={ () => <Redirect to="/home"></Redirect> }></Route>
           <Route path="/login" component={Login}/>
           <Route path="/home" component={Home}/>
           <Route component={Nomatch}/>
