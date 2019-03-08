@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
 class Myblog extends Component {
@@ -6,9 +6,9 @@ class Myblog extends Component {
     const { loginStatus} = this.props;
     if(loginStatus){
       return (
-        <div>
+        <Fragment>
           写博客
-        </div>
+        </Fragment>
       );
     }else{
       return <Redirect to="/login" />
@@ -17,7 +17,7 @@ class Myblog extends Component {
 }
 const mapStateToProps = state => {
   return {
-    loginStatus: state.getIn(['login', 'login'])
+
   };
 };
 const mapDispatchToProps = dispatch => {
