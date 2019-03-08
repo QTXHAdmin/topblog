@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 
 class Moment extends Component {
   constructor(props){
@@ -24,9 +24,9 @@ class Moment extends Component {
   }
   render() {
     return (
-      <div>
-        <span style={{fontSize:'30px'}}>Timer : {this.state.now}</span>  
-      </div>
+      <Fragment>
+        <span style={{fontSize:'16px'}}>Today : {this.state.now}</span>  
+      </Fragment>
     );
   }
 }

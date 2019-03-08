@@ -31,7 +31,9 @@ class Login extends Component {
           <header className="header-title">
             <h1>欢迎登录</h1>
           </header>
-          <Moment className="moment"/>
+          <div className="moment">
+            <Moment />
+          </div>
           <div className="login-wrapper">
             <Tabs
               //默认页签的key值
@@ -40,7 +42,7 @@ class Login extends Component {
                 background: '#fff',
                 paddingBottom: '30px',
                 width: '30%',
-                margin: '50px auto 0'
+                margin: '0 auto'
               }}
             >
             {/* 登录 */}
@@ -183,10 +185,10 @@ class Login extends Component {
                           rules: [
                             {
                               required: true,
-                              message: '用户名不能为空'
+                              message: '密码不能为空'
                             },
                             {
-                              message: '请输入用户名长度5-12',
+                              message: '请输入密码长度5-12',
                               min: 5,
                               max: 12
                             },
@@ -198,7 +200,7 @@ class Login extends Component {
                         })(
                           <Input
                             style={{ width: '80%', marginBottom: '20px' }}
-                            placeholder="请输入用户名"
+                            placeholder="请输入密码"
                           />
                         )}
                       </FormItem>
