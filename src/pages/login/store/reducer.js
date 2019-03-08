@@ -9,6 +9,8 @@ export default (state = defaultState, action) => {
       return state.set('login', action.value);
     case constants.LOGOUT:
       return state.set('login', action.value);
+    case constants.REGIS_LOGIN:
+      return state.set('login', action.value);
     default:
       return state;
   }

@@ -112,6 +112,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logout() {
+      sessionStorage.clear();
       dispatch(loginActionCreators.logout());
     }
   };
