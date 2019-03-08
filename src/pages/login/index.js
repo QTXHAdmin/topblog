@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { actionCreator } from './store';
 import './style.less';
+import Moment from '../../components/moment';
 import { Tabs, Icon, Checkbox, Button, Form, Input, Radio } from 'antd';
 const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
@@ -30,6 +31,7 @@ class Login extends Component {
           <header className="header-title">
             <h1>欢迎登录</h1>
           </header>
+          <Moment className="moment"/>
           <div className="login-wrapper">
             <Tabs
               //默认页签的key值
