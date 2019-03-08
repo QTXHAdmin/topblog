@@ -22,9 +22,7 @@ class Myblog extends Component {
   }
 }
 const mapStateToProps = state => {
-  return {
-    loginStatus: state.getIn(['login', 'login'])
-  };
+  return {};
 };
 const mapDispatchToProps = dispatch => {
   return {};

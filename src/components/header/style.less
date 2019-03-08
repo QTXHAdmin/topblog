@@ -1,0 +1,47 @@
+.main {
+  width: 1190px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 50px;
+  line-height: 50px;
+  background-color: #fff;
+
+  .header-top {
+    background-color: #eee;
+
+    .count-info {
+      float: right;
+
+      .search {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        outline: none;
+        border: none;
+        margin-top: 10px;
+        background: #f5f5f5;
+        text-indent: 1rem;
+        margin-right: 20px;
+        border-radius: 5px;
+        &::placeholder{
+          color:#ccc;
+        }
+      }
+
+      .right-menu {
+        float: left;
+        margin-bottom:0;
+        li {
+          color:#595959;
+          float: left;
+          margin: 0 10px;
+          &:hover{
+            color:#f00;
+          }
+        }
+      }
+    }
+  }
+}
