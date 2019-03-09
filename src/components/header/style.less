@@ -25,20 +25,51 @@
         text-indent: 1rem;
         margin-right: 20px;
         border-radius: 5px;
-        &::placeholder{
-          color:#ccc;
+
+        &::placeholder {
+          color: #ccc;
         }
       }
 
       .right-menu {
         float: left;
-        margin-bottom:0;
+        margin-bottom: 0;
+        position: relative;
+
+        .userinfo {
+          cursor: pointer;
+        }
+
         li {
-          color:#595959;
+          color: #595959;
           float: left;
           margin: 0 10px;
-          &:hover{
-            color:#f00;
+
+          &:hover {
+            color: #f00;
+          }
+
+          &.userinfo:hover {
+            .usermanage {
+              display: block;
+            }
+          }
+
+          .usermanage {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            width: 120px;
+            background: #fff;
+            text-align: center;
+            border-radius: 5px;
+            display: none;
+            box-shadow: 2px -5px 4px 1px #d9d9d9, 1px 2px 11px 2px #d9d9d9;
+            z-index: 1000;
+
+            li {
+              float: none;
+            }
           }
         }
       }

@@ -23,7 +23,7 @@ class Login extends Component {
     console.log(`checked = ${e.target.checked}`);
   };
   render() {
-    const { loginStatus } = this.props;
+    const { loginStatus, username, password } = this.props;
     const { getFieldDecorator } = this.props.form;
     if (!loginStatus) {
       return (
@@ -45,14 +45,14 @@ class Login extends Component {
                 margin: '0 auto'
               }}
             >
-            {/* 登录 */}
+              {/* 登录 */}
               <TabPane tab="账号登录" key="1">
                 <div className="input-border">
                   <Form>
                     <p className="prompt-msg">如果您有我们的帐户，请登录！</p>
                     <FormItem label="用户名" {...formItemLayout}>
                       {getFieldDecorator('userName', {
-                        initialValue: '',
+                        initialValue: username,
                         rules: [
                           {
                             required: true,
@@ -70,6 +70,7 @@ class Login extends Component {
                         ]
                       })(
                         <Input
+                          onChange={this.props.userNameChange}
                           style={{ width: '80%', marginBottom: '20px' }}
                           placeholder="输入用户名"
                           prefix={
@@ -85,8 +86,8 @@ class Login extends Component {
                       )}
                     </FormItem>
                     <FormItem label="密码" {...formItemLayout}>
-                      {getFieldDecorator('password', {
-                        initialValue: '',
+                      {getFieldDecorator('passWord', {
+                        initialValue: password,
                         rules: [
                           {
                             required: true,
@@ -104,6 +105,7 @@ class Login extends Component {
                         ]
                       })(
                         <Input
+                          onChange={this.props.passWordChange}
                           style={{ width: '80%', marginBottom: '20px' }}
                           placeholder="输入密码"
                           prefix={
@@ -127,9 +129,9 @@ class Login extends Component {
                       })(
                         <Checkbox style={{ float: 'left' }}>记住密码</Checkbox>
                       )}
-                      <a style={{ float: 'right', marginRight: '20px' }}>
+                      <span style={{ float: 'right', marginRight: '20px' }}>
                         忘记密码?
-                      </a>
+                      </span>
                     </FormItem>
                     <Button
                       type="primary"
@@ -231,7 +233,7 @@ class Login extends Component {
                     <br />
                     <Button
                       type="primary"
-                      onClick={() => this.props.Regiest(this.props.form)}
+                      onClick={() => this.props.Registe(this.props.form)}
                     >
                       注册
                     </Button>
@@ -249,13 +251,21 @@ class Login extends Component {
 }
 const mapStateToProps = state => {
   return {
+    username: state.getIn(['login', 'username']),
+    password: state.getIn(['login', 'password']),
     loginStatus: state.getIn(['login', 'login'])
   };
 };
 const mapDispatchToProps = dispatch => ({
+  userNameChange(e) {
+    dispatch(actionCreator.usernamechange(e.target.value));
+  },
+  passWordChange(e) {
+    dispatch(actionCreator.passwordchange(e.target.value));
+  },
   //登录功能
   Login(props, accountElem, passwordElem, form) {
-    form.validateFields(['userName', 'password'], err => {
+    form.validateFields(['userName', 'passWord'], err => {
       if (!err) {
         // 查看控制台找到想要的属性
         let obj = {
@@ -273,11 +283,11 @@ const mapDispatchToProps = dispatch => ({
     });
   },
   //注册功能
-  Regiest(form) {
+  Registe(form) {
     form.validateFields(['regusername', 'reguserpwd'], err => {
       if (!err) {
         let infolist = form.getFieldsValue(['regusername', 'reguserpwd']);
-        dispatch(actionCreator.regiest(JSON.stringify(infolist)));
+        dispatch(actionCreator.registe(JSON.stringify(infolist)));
       }
     });
   }
