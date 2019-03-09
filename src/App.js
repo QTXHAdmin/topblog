@@ -3,6 +3,7 @@ import Login from './pages/login';
 import Home from './pages/home';
 import Myblog from './pages/system/myblog';
 import Nomatch from './pages/nomatch';
+import Manageblog from './pages/system/manageblog';
 import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 class App extends Component {
   checkUserState(){
@@ -26,6 +27,7 @@ class App extends Component {
             return <Redirect to="/login" />
           }}/>
           <Route path="/myblog" component={Myblog}/>
+          <Route path="/manageblog" component={Manageblog}/>
           <Route component={Nomatch}/>
         </Switch>
       </Router>
