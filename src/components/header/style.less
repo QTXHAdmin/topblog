@@ -7,10 +7,9 @@
   height: 50px;
   line-height: 50px;
   background-color: #fff;
-
   .header-top {
-    background-color: #eee;
-
+    background-color: #000;
+    opacity: 0.9;
     .count-info {
       float: right;
 
@@ -49,12 +48,12 @@
             color: #f00;
           }
 
-          &.userinfo:hover {
-            .usermanage {
-              display: block;
-            }
-          }
-
+          // &.userinfo:hover {
+          //   .usermanage {
+          //     display: block;
+          //   }
+          // }
+         
           .usermanage {
             position: absolute;
             top: 50px;
@@ -63,10 +62,9 @@
             background: #fff;
             text-align: center;
             border-radius: 5px;
-            display: none;
+            opacity: 0;
             box-shadow: 2px -5px 4px 1px #d9d9d9, 1px 2px 11px 2px #d9d9d9;
             z-index: 1000;
-
             li {
               float: none;
             }
@@ -76,3 +74,23 @@
     }
   }
 }
+.fade-enter{
+  opacity: 0;
+} 
+.fade-enter-active{
+  opacity: 1;
+  transition: all 0.5s ease-in;
+} 
+.fade-enter-done{
+  opacity: 1;
+}
+// .fade-exit{
+//   opacity: 1;
+// } 
+// .fade-exit-active{
+//   opacity: 0;
+//   transition: all 0.5s ease-in;
+// }
+// .fade-exit-done{
+//   opacity: 0;
+// }
