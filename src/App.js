@@ -22,13 +22,19 @@ class App extends Component {
         <Switch>
           <Route path="/" exact render={() => <Redirect to="/home" />} />
           <Route path="/login" component={Login} />
-          {/* <Route path="/home" render={(props)=>{
-            if(this.checkUserState()){
-              return <Home {...props}/>
-            }
-            sessionStorage.setItem('APP_LAST_URL',JSON.stringify(props.location))
-            return <Redirect to="/login" />
-          }}/> */}
+          <Route
+            path="/home"
+            render={props => {
+              if (this.checkUserState()) {
+                return <Home {...props} />;
+              }
+              sessionStorage.setItem(
+                'APP_LAST_URL',
+                JSON.stringify(props.location)
+              );
+              return <Redirect to="/login" />;
+            }}
+          />
           <Route path="/myblog" component={Myblog} />
           <Route component={Nomatch} />
         </Switch>
