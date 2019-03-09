@@ -5,7 +5,9 @@ class Myblog extends Component {
   render() {
     const { loginStatus } = this.props;
     if (loginStatus) {
-      return <Fragment>写博客</Fragment>;
+      return <Fragment>
+            <span style={{color:'#fff'}}>写博客</span>
+        </Fragment>;
     } else {
       return <Redirect to="/login" />;
     }

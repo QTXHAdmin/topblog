@@ -16,7 +16,8 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/" exact render={ () => <Redirect to="/home"></Redirect> }></Route>
-          <Route path="/login" component={Login}/>
+          <Route path="/login" exact component={Login}/>
+          <Route path="/home" component={Home} />
           <Route path="/home" render={(props)=>{
             if(this.checkUserState()){
               return <Home {...props}/>

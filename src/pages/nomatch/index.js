@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 
 class Nomatch extends Component {
   render() {
-    return (
-      <div>
-        404 Pages!
-      </div>
-    );
+    return <div style={{color:'#fff'}}>404 Pages!</div>;
   }
 }
 

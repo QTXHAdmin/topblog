@@ -1,8 +1,8 @@
 import * as constants from './constants';
 import { fromJS } from 'immutable';
 const defaultState = fromJS({
-  username:'',
-  passoword:'',
+  username: '',
+  passoword: '',
   login: false
 });
 export default (state = defaultState, action) => {
@@ -15,8 +15,8 @@ export default (state = defaultState, action) => {
       return state.set('login', action.value);
     case constants.LOGOUT:
       return state.set('login', action.value);
-    case constants.REGIS_LOGIN:
-      return state.set('login', action.value);
+    // case constants.REGIS_LOGIN:
+    //   return state.set('login', action.value);
     default:
       return state;
   }
