@@ -2,13 +2,22 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { actionCreator} from './store';
+import { actionCreator } from './store';
 import './style.less';
 import Moment from '../moment';
 import { actionCreator as loginActionCreators } from '../../pages/login/store';
 class Header extends Component {
   render() {
-    const { login, logout ,handleHover,focused,handleLeave} = this.props;
+    const {
+      login,
+      inputflag,
+      handleFocus,
+      handleBlur,
+      logout,
+      handleHover,
+      focused,
+      handleLeave
+    } = this.props;
     return (
       <Fragment>
         <header className="header">
@@ -16,7 +25,15 @@ class Header extends Component {
             <div className="main">
               <Moment className="moment" />
               <div className="count-info">
-                <input type="text" placeholder="搜Topblog" className="search" />
+                <CSSTransition in={inputflag} timeout={1000} classNames="slide">
+                  <input
+                    type="text"
+                    placeholder="搜Topblog"
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={inputflag ? 'search active' : 'search'}
+                  />
+                </CSSTransition>
                 <ul className="right-menu clearfix">
                   <Link to="/myblog">
                     <li>写博客</li>
@@ -29,21 +46,27 @@ class Header extends Component {
                       <li>登录</li>
                     </Link>
                   )}
-                  <li className="userinfo" onMouseOver={handleHover} onMouseLeave={handleLeave}>
+                  <li
+                    className="userinfo"
+                    onMouseOver={handleHover}
+                    onMouseLeave={handleLeave}
+                  >
                     <span>头像</span>
                     <CSSTransition
                       in={focused}
-                      timeout={500}
-                      classNames='fade'
+                      timeout={1000}
+                      classNames="fade"
                       unmountOnExit
-                      onEntered={(el)=>el.style.opacity=1}
+                      onEntered={el => (el.style.opacity = 1)}
                     >
-                    <ul className='usermanage'>
-                      <li>我的博客</li>
-                      <li>管理博客</li>
-                      <li>个人中心</li>
-                      <li>退出</li>
-                    </ul>
+                      <ul className="usermanage">
+                        <li>我的博客</li>
+                        <Link to="/manageblog">
+                          <li>管理博客</li>
+                        </Link>
+                        <li>个人中心</li>
+                        <li>退出</li>
+                      </ul>
                     </CSSTransition>
                   </li>
                 </ul>
@@ -59,7 +82,8 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     login: state.getIn(['login', 'login']),
-    focused:state.getIn(['header','focused'])
+    focused: state.getIn(['header', 'focused']),
+    inputflag: state.getIn(['header', 'inputflag'])
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -68,11 +92,17 @@ const mapDispatchToProps = dispatch => {
       sessionStorage.clear();
       dispatch(loginActionCreators.logout());
     },
-    handleHover(){
+    handleHover() {
       dispatch(actionCreator.handleover());
     },
-    handleLeave(){
+    handleLeave() {
       dispatch(actionCreator.handleleave());
+    },
+    handleFocus() {
+      dispatch(actionCreator.handlefocus());
+    },
+    handleBlur() {
+      dispatch(actionCreator.handleblur());
     }
   };
 };
