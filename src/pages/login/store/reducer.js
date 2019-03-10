@@ -1,9 +1,10 @@
 import * as constants from './constants';
 import { fromJS } from 'immutable';
+let login = sessionStorage.getItem('login') ? sessionStorage.getItem('login'): '';
 const defaultState = fromJS({
   username: '',
   passoword: '',
-  login: false
+  login: login
 });
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -12,6 +13,7 @@ export default (state = defaultState, action) => {
     case constants.PASS_WROD_CHANGE:
       return state.set('passoword', action.value);
     case constants.CHANGE_LOGIN:
+      sessionStorage.setItem('login',action.value);
       return state.set('login', action.value);
     case constants.LOGOUT:
       return state.set('login', action.value);

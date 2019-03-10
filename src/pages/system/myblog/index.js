@@ -69,7 +69,9 @@ class Myblog extends Component {
               </div>
               <div className="l-hot">
                 <span className="l-hottext">热门文章</span>
+                <div></div>
               </div>
+
             </div>
             <div className="myBlogBody-r">
               <div className="r-title">
