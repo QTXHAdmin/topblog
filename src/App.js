@@ -3,9 +3,11 @@ import Login from './pages/login';
 import Home from './pages/home';
 import Myblog from './pages/system/myblog';
 import Nomatch from './pages/nomatch';
+
 import Manageblog from './pages/system/manageblog';
 import Writeblog from './pages/system/writeblog';
 import Markedownedit from './pages/system/markedownedit';
+
 import {
   HashRouter as Router,
   Route,
@@ -25,7 +27,6 @@ class App extends Component {
         <Switch>
           <Route path="/" exact render={() => <Redirect to="/home" />} />
           <Route path="/login" exact component={Login} />
-          <Route path="/home" component={Home} />
           <Route
             path="/home"
             render={props => {
@@ -43,6 +44,7 @@ class App extends Component {
           <Route path="/manageblog" component={Manageblog} />
           <Route path="/writeblog" component={Writeblog} />
           <Route path="/markdownedit" component={Markedownedit} />
+
           <Route component={Nomatch} />
         </Switch>
       </Router>

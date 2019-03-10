@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import Headerr from '../../../components/header';
+import Headerr from '../../../components/Header';
 import Navbar from './components/navbar/navbar';
 import Topbar from './components/topbar/topbar';
 import Maincontent from './components/maincontent/maincontent';
@@ -17,7 +17,6 @@ class Manageblog extends Component {
           <Navbar />
           <Layout>
             <Content
-              
               style={{
                 margin: '24px 16px 0',
                 // overflow: 'initial',
