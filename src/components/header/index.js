@@ -68,7 +68,9 @@ class Header extends Component {
                         <Link to="/manageblog">
                           <li>管理博客</li>
                         </Link>
-                        <li>个人中心</li>
+                        <Link to="userimanage">
+                          <li>个人中心</li>
+                        </Link>
                         <li>退出</li>
                       </ul>
                     </CSSTransition>

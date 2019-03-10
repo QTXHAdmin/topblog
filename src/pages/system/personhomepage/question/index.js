@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-class Writeblog extends Component {
+import './style.less';
+class Question extends Component {
   render() {
     return (
       <Fragment>
-        <span style={{ color: '#fff' }}>富文本</span>
+        <div className="info"> Question</div>
       </Fragment>
     );
   }
@@ -12,7 +13,7 @@ class Writeblog extends Component {
 
 const mapStateToProps = state => {
   return {
-    loginStatus: state.getIn(['login', 'login'])
+    
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -21,4 +22,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Writeblog);
+)(Question);

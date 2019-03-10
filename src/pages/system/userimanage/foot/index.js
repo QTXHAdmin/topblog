@@ -1,19 +1,20 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component,Fragment } from 'react';
 import { connect } from 'react-redux';
-class Writeblog extends Component {
+import './style.less';
+class Foot extends Component {
   render() {
     return (
       <Fragment>
-        <span style={{ color: '#fff' }}>富文本</span>
+          <div className="foot-wrap">
+              广告位 随意放 ！！！
+          </div>
       </Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {
-    loginStatus: state.getIn(['login', 'login'])
-  };
+  return {};
 };
 const mapDispatchToProps = dispatch => {
   return {};
@@ -21,4 +22,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Writeblog);
+)(Foot);

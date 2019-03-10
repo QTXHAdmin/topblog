@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import Headerr from '../../../components/Header';
+import Headerr from '../../../components/header';
 import Navbar from './components/navbar/navbar';
 import Topbar from './components/topbar/topbar';
 import Maincontent from './components/maincontent/maincontent';

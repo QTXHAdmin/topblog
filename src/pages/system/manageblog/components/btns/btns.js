@@ -45,7 +45,7 @@ class Btns extends Component {
             <Option value="classify">个人分类</Option>
           </Select>
           <Search
-            style={{ width: '200px'}}
+            style={{ width: '200px' }}
             placeholder="请输入标题关键词"
             onSearch={value => console.log(value)}
             enterButton
