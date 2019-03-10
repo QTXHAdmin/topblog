@@ -7,7 +7,7 @@ import Maincontent from './components/maincontent/maincontent';
 import Btns from './components/btns/btns';
 import './style.less';
 import { Layout } from 'antd';
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 class Manageblog extends Component {
   render() {
     return (
@@ -20,7 +20,7 @@ class Manageblog extends Component {
               
               style={{
                 margin: '24px 16px 0',
-                overflow: 'initial',
+                // overflow: 'initial',
                 height: '100%'
               }}
             >

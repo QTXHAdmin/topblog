@@ -35,10 +35,12 @@ class Header extends Component {
                   />
                 </CSSTransition>
                 <ul className="right-menu clearfix">
-                  <Link to="/myblog">
+                  <Link to="/writeblog">
                     <li>写博客</li>
                   </Link>
-                  <li>消息</li>
+                  <Link to="/home">
+                    <li>首页</li>
+                  </Link>
                   {login ? (
                     <li onClick={logout}>退出</li>
                   ) : (
@@ -60,7 +62,9 @@ class Header extends Component {
                       onEntered={el => (el.style.opacity = 1)}
                     >
                       <ul className="usermanage">
-                        <li>我的博客</li>
+                        <Link to="/myblog">
+                          <li>我的博客</li>
+                        </Link>
                         <Link to="/manageblog">
                           <li>管理博客</li>
                         </Link>

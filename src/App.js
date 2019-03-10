@@ -4,6 +4,8 @@ import Home from './pages/home';
 import Myblog from './pages/system/myblog';
 import Nomatch from './pages/nomatch';
 import Manageblog from './pages/system/manageblog';
+import Writeblog from './pages/system/writeblog';
+import Markedownedit from './pages/system/markedownedit';
 import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 class App extends Component {
   checkUserState(){
@@ -28,6 +30,8 @@ class App extends Component {
           }}/>
           <Route path="/myblog" component={Myblog}/>
           <Route path="/manageblog" component={Manageblog}/>
+          <Route path="/writeblog" component={Writeblog}/>
+          <Route path="/markdownedit" component={Markedownedit}/>
           <Route component={Nomatch}/>
         </Switch>
       </Router>
