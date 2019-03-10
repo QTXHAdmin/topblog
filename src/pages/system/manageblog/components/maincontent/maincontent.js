@@ -13,7 +13,6 @@ class Maincontent extends Component {
   }
   render() {
     const { showDeleteConfirm, articleslist, handleStick } = this.props;
-    // console.log(articleslist.length);
     return (
       <Fragment>
         <ul className="arcitle-list-wrap">
@@ -24,8 +23,8 @@ class Maincontent extends Component {
                 <div className="arcitile-info-wrap">
                   <div className="left-info">
                     <span>原创</span>
-                    <span>时间:{item.time}</span>{' '}
-                    <span>人数:{item.visitors}</span>{' '}
+                    <span>时间:{item.time}</span>
+                    <span>人数:{item.visitors}</span>
                     <span>评论数:{item.commits}</span>
                   </div>
                   <div className="right-info">

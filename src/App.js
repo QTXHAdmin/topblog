@@ -6,6 +6,8 @@ import Nomatch from './pages/nomatch';
 import Manageblog from './pages/system/manageblog';
 import Writeblog from './pages/system/writeblog';
 import Markedownedit from './pages/system/markedownedit';
+import Usermanage from './pages/system/userimanage';
+import Personhomepage from './pages/system/personhomepage';
 import {
   HashRouter as Router,
   Route,
@@ -43,6 +45,8 @@ class App extends Component {
           <Route path="/manageblog" component={Manageblog} />
           <Route path="/writeblog" component={Writeblog} />
           <Route path="/markdownedit" component={Markedownedit} />
+          <Route path="/userimanage" component={Usermanage} />
+          <Route path="/personhomepage" component={Personhomepage} />
           <Route component={Nomatch} />
         </Switch>
       </Router>
