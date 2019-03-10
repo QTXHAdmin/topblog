@@ -3,8 +3,10 @@ import { combineReducers } from 'redux-immutable';
 // import { reducer as homeReducer } from '../pages/home/store';
 import { reducer as loginReducer } from '../pages/login/store';
 import {reducer as headerReducer} from '../components/header/store';
+import {reducer as manageblogReducer} from '../pages/system/manageblog/store';
 const reducer = combineReducers({
   login: loginReducer,
-  header:headerReducer
+  header:headerReducer,
+  manageblog:manageblogReducer
 });
 export default reducer;
