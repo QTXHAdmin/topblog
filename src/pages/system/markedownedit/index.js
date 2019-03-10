@@ -4,7 +4,7 @@ class Markedownedit extends Component {
   render() {
     return (
       <Fragment>
-        <span style={{ color: '#fff' }}>富文本编辑器</span>
+        <span style={{ color: '#fff' }}>Markdown编辑器</span>
       </Fragment>
     );
   }
