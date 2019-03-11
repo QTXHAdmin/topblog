@@ -14,7 +14,7 @@ class Pubsource extends Component {
   render() {
     return (
       <Fragment>
-        <div className="pubsource-wrapper">
+        <div className="pubsource-wrapper clearfix">
           <Navbar
             level={this.state.level}
             visit={this.state.visit}
@@ -23,7 +23,6 @@ class Pubsource extends Component {
 
           <ConfigProvider>
             <div className="config-provider">
-              <h3>Table</h3>
               <Table style={{ marginTop: 8 }} />
             </div>
           </ConfigProvider>

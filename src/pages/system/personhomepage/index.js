@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {Route,Redirect} from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Headers from '../../../components/header';
 import Homepageheader from './components/homepagehead';
 import Homepageinfo from './components/homepageinfo';
@@ -17,11 +17,14 @@ class Personhomepage extends Component {
         <div className="main">
           <div className="content-left">
             <Homepageheader />
-            <Route path="/personhomepage" render={()=><Redirect to="/personhomepage/blog" />}/>
-            <Route path="/personhomepage/blog" component={Blog}/>
-            <Route path="/personhomepage/pubsource" component={Pubsource}/>
-            <Route path="/personhomepage/pubcard" component={Pubcard}/>
-            <Route path="/personhomepage/question" component={Question}/>
+            <Route
+              path="/personhomepage"
+              render={() => <Redirect to="/personhomepage/blog" />}
+            />
+            <Route path="/personhomepage/blog" component={Blog} />
+            <Route path="/personhomepage/pubsource" component={Pubsource} />
+            <Route path="/personhomepage/pubcard" component={Pubcard} />
+            <Route path="/personhomepage/question" component={Question} />
           </div>
           <div className="content-right">
             <Homepageinfo />
@@ -33,9 +36,7 @@ class Personhomepage extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    
-  };
+  return {};
 };
 const mapDispatchToProps = dispatch => {
   return {};

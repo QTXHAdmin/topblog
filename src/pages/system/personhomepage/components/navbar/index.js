@@ -6,8 +6,8 @@ class Navbar extends Component {
     const {level,visit,original,repeat,ranking,comment,praised} = this.props;
     return (
       <Fragment>
-        <div className="navbar-wrapper">
-          <ul>
+        <div className="navbar-wrapper clearfix">
+          <ul className="clearfix">
             <li><p>后台</p><span>{level}</span></li>
             <li><p>后台</p><span>{visit}</span></li>
             <li><p>后台</p><span>{original}</span></li>
