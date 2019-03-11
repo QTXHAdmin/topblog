@@ -5,7 +5,8 @@ let login = sessionStorage.getItem('login')
   : '';
 const defaultState = fromJS({
   articleslist: [],
-  login: login
+  login: login,
+  arcitleid:''
 });
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -14,6 +15,8 @@ export default (state = defaultState, action) => {
       return state.set('login', action.value);
     case constants.INIT_ARTICLES:
       return state.set('articleslist', action.data);
+    case constants.GET_ITEM_INFO :
+      return state.set('arcitleid', action.id);
     case constants.DELETE_ARTICLES:
       const newState = JSON.parse(JSON.stringify(state));
       newState.articleslist.splice(action.index, 1);

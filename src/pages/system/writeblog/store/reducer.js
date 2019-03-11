@@ -1,12 +1,12 @@
 import * as constants from './constants';
 import { fromJS } from 'immutable';
 const defaultState = fromJS({
-  articles: []
+  inputValue: ''
 });
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case constants.GET_ALL_ARCITLES:
-      return state.set('articles', action.data);
+    case constants.INPUT_VALUE:
+      return state.set('inputValue', action.value);
     default:
       return state;
   }
