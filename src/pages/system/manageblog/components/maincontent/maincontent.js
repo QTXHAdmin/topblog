@@ -12,7 +12,7 @@ class Maincontent extends Component {
     store.dispatch(actionCreator.getarticles());
   }
   render() {
-    const { showDeleteConfirm, articleslist, handleStick } = this.props;
+    const { showDeleteConfirm, articleslist, handleStick,getItemInfo } = this.props;
     return (
       <Fragment>
         <ul className="arcitle-list-wrap">
@@ -29,7 +29,7 @@ class Maincontent extends Component {
                   </div>
                   <div className="right-info">
                     <Link to="/articledetail">
-                      <Button size="small" type="primary">
+                      <Button size="small" type="primary" onClick={()=>getItemInfo(item._id)}>
                         查看
                       </Button>
                     </Link>
@@ -81,6 +81,10 @@ const mapDispatchToProps = dispatch => {
     },
     handleStick(index) {
       dispatch(actionCreator.handleStick(index));
+    },
+    getItemInfo(id){
+      console.log(id);
+      dispatch(actionCreator.getiteminfo(id));
     }
   };
 };

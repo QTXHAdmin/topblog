@@ -12,6 +12,10 @@ const handlestick = index => ({
   type: constants.STICK,
   index
 });
+export const getiteminfo = id => ({
+  type: constants.GET_ITEM_INFO,
+  id
+});
 export const getarticles = () => {
   return dispatch => {
     axios.get('http://192.168.1.119:8088/getblog').then(res => {
@@ -24,6 +28,14 @@ export const deleteitem = index => {
   return dispatch => {
     axios.get('http://localhost:3000/articles').then(() => {
       dispatch(deletearticles(index));
+    });
+  };
+};
+export const getarticleid = id => {
+  return dispatch => {
+    axios.post('http://192.168.1.119:8088/getblog?id='+id)
+    .then((res) => {
+        console.log(res);
     });
   };
 };
