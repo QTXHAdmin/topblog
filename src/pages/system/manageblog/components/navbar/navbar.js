@@ -24,7 +24,7 @@ class Navbar extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/writeblog">
+              <Link to="/manageblog/writeblog">
                 <Icon type="video-camera" />
                 <span className="nav-text">富文本编辑器</span>
               </Link>
@@ -36,8 +36,10 @@ class Navbar extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <Icon type="bar-chart" />
-              <span className="nav-text">文章管理</span>
+              <Link to="/manageblog/arcitlemanage">
+                <Icon type="bar-chart" />
+                <span className="nav-text">文章管理</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="5">
               <Icon type="cloud-o" />

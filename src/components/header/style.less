@@ -7,12 +7,14 @@
   height: 50px;
   line-height: 50px;
   background-color: #fff;
+
   .header-top {
     background-color: #000;
     opacity: 0.9;
+
     .count-info {
       float: right;
-      
+
       .search {
         float: left;
         height: 30px;
@@ -24,29 +26,35 @@
         text-indent: 1rem;
         margin-right: 20px;
         border-radius: 5px;
+
         // &.active{
         //   width:200px;
         // }
         &::placeholder {
           color: #ccc;
         }
-        &.slide-enter{
-          width:157px;
-        } 
-        &.slide-enter-active{
-          width:240px;
+
+        &.slide-enter {
+          width: 157px;
+        }
+
+        &.slide-enter-active {
+          width: 240px;
           transition: all 0.2s ease;
-        } 
-        &.slide-enter-done{
-          width:240px;
-        } 
-        &.slide-exit{
-          width:240px;
-        } 
-        &.slide-exit-active{
-          width:157px;
+        }
+
+        &.slide-enter-done {
+          width: 240px;
+        }
+
+        &.slide-exit {
+          width: 240px;
+        }
+
+        &.slide-exit-active {
+          width: 157px;
           transition: all 0.2s ease;
-        } 
+        }
       }
 
       .right-menu {
@@ -72,7 +80,7 @@
           //     display: block;
           //   }
           // }
-         
+
           .usermanage {
             position: absolute;
             top: 50px;
@@ -84,27 +92,33 @@
             opacity: 0;
             box-shadow: 2px -5px 4px 1px #d9d9d9, 1px 2px 11px 2px #d9d9d9;
             z-index: 1000;
-            &.fade-enter{
+
+            &.fade-enter {
               opacity: 0;
-            } 
-            &.fade-enter-active{
+            }
+
+            &.fade-enter-active {
               opacity: 1;
               transition: all 0.5s ease-in;
-            } 
-            &.fade-enter-done{
+            }
+
+            &.fade-enter-done {
               opacity: 1;
             }
-            &.fade-exit{
+
+            &.fade-exit {
               opacity: 1;
-            } 
-            &.fade-exit-active{
+            }
+
+            &.fade-exit-active {
               opacity: 1;
               transition: all 0.5s ease-in;
-            } 
-            &.fade-exit-done{
+            }
+
+            &.fade-exit-done {
               opacity: 0;
-            } 
-            
+            }
+
             li {
               float: none;
             }
@@ -114,7 +128,3 @@
     }
   }
 }
-
-// .slide-enter-done{
-//   opacity: 1;
-// }
