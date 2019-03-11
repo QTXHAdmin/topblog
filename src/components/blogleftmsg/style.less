@@ -1,0 +1,92 @@
+.myBlogBody-l {
+  width: 300px;
+  flex: 1 1 300px;
+
+  .l-top {
+    width: 300px;
+    height: 80px;
+    border-bottom: 1px solid #cccccc;
+    background-color: #fff;
+    padding: 20px;
+
+    .username {
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  }
+
+  .l-middle {
+    width: 300px;
+    height: 76px;
+    border-bottom: 1px solid #cccccc;
+    background-color: #ffffff;
+    padding: 20px;
+
+    .l-middlelist {
+      display: flex;
+      justify-content: space-around;
+
+      li {
+        width: 70px;
+        line-height: 22px;
+
+        p {
+          width: 70px;
+          height: 22px;
+          text-align: center;
+          font-weight: bold;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+
+  .l-bottom {
+    width: 300px;
+    height: 90px;
+    border-bottom: 1px solid #cccccc;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    p {
+
+      width: 128px;
+    }
+  }
+
+  .l-hot {
+    width: 300px;
+    height: 138px;
+    padding: 10px 20px 0 20px;
+    background: #fff;
+    line-height: 38px;
+    position: relative;
+
+    .l-hottext {
+      display: inline-block;
+      height: 38px;
+      margin-left: 10px;
+      line-height: 38px;
+      font-size: 16px;
+      font-weight: blod;
+      color: #000000;
+
+    }
+
+
+  }
+
+  .l-hot::before {
+    content: "";
+    height: 24px;
+    width: 6px;
+    background: red;
+    position: absolute;
+    left: 14px;
+    top: 14px;
+  }
+}
