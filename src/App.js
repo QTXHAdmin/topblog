@@ -9,6 +9,7 @@ import Writeblog from './pages/system/writeblog';
 import Markedownedit from './pages/system/markedownedit';
 import Usermanage from './pages/system/userimanage';
 import Personhomepage from './pages/system/personhomepage';
+import Arcitledetail from './pages/system/arcitledetail';
 import {
   HashRouter as Router,
   Route,
@@ -47,6 +48,7 @@ class App extends Component {
           <Route path="/markdownedit" component={Markedownedit} />
           <Route path="/userimanage" component={Usermanage} />
           <Route path="/personhomepage" component={Personhomepage} />
+          <Route path="/articledetail" component={Arcitledetail} />
           <Route component={Nomatch} />
         </Switch>
       </Router>

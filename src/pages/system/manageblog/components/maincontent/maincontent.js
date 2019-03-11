@@ -18,7 +18,7 @@ class Maincontent extends Component {
         <ul className="arcitle-list-wrap">
           {articleslist.map((item, index) => {
             return (
-              <li key={item.id}>
+              <li key={item._id}>
                 <h3>{item.title}</h3>
                 <div className="arcitile-info-wrap">
                   <div className="left-info">
@@ -28,7 +28,7 @@ class Maincontent extends Component {
                     <span>评论数:{item.commits}</span>
                   </div>
                   <div className="right-info">
-                    <Link to="/maincontent">
+                    <Link to="/articledetail">
                       <Button size="small" type="primary">
                         查看
                       </Button>

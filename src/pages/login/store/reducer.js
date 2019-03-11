@@ -6,7 +6,8 @@ let login = sessionStorage.getItem('login')
 const defaultState = fromJS({
   username: '',
   passoword: '',
-  login: login
+  login: login,
+  userdata:{}
 });
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -16,7 +17,7 @@ export default (state = defaultState, action) => {
       return state.set('passoword', action.value);
     case constants.CHANGE_LOGIN:
       sessionStorage.setItem('login', action.value);
-      return state.set('login', action.value);
+      return state.set('login', action.value).set('userdata',action.userdata);
     case constants.LOGOUT:
       return state.set('login', action.value);
     // case constants.REGIS_LOGIN:

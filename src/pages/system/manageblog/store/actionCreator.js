@@ -14,8 +14,8 @@ const handlestick = index => ({
 });
 export const getarticles = () => {
   return dispatch => {
-    axios.get('http://localhost:3000/articles').then(res => {
-      const data = res.data;
+    axios.get('http://192.168.1.119:8088/getblog').then(res => {
+      const data = res.data.data;
       dispatch(initarticles(data));
     });
   };
