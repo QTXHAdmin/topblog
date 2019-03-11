@@ -6,7 +6,7 @@ const defaultState = fromJS({
 export default (state = defaultState, action) => {
   switch (action.type) {
     case constants.INIT_ARTICLES:
-    return state.set('articleslist', action.data);
+      return state.set('articleslist', action.data);
     default:
       return state;
   }

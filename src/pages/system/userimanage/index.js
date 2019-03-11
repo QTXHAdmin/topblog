@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Headers from '../../../components/header';
 import Navleft from './leftnav';
-import Maininfo  from './maininfo';
+import Maininfo from './maininfo';
 import Foot from './foot';
 import './style.less';
 class Usermanage extends Component {

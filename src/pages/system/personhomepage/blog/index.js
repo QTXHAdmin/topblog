@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {actionCreator} from '../store';
+import { actionCreator } from '../store';
 import store from '../../../../store';
 import Navbar from '../components/navbar';
 import './style.less';
@@ -14,14 +14,14 @@ class Blog extends Component {
     comment: '评论',
     praised: '获赞'
   };
-  componentDidMount(){
+  componentDidMount() {
     store.dispatch(actionCreator.getinfo());
   }
   render() {
     const { articleslist } = this.props;
     return (
       <Fragment>
-        <div className="blog-wrapper">
+        <div className="blog-wrapper clearfix">
           <div className="blog-top clearfix">
             <Navbar
               level={this.state.level}
@@ -34,22 +34,22 @@ class Blog extends Component {
             />
           </div>
           <ul className="arcitle-list-wrap">
-          {articleslist.map((item, index) => {
-            return (
-              <li key={item.id}>
-                <h3>{item.title}</h3>
-                <div className="arcitile-info-wrap">
-                  <div className="left-info">
-                    <span>阅读次数:{item.visitors}</span>
+            {articleslist.map((item, index) => {
+              return (
+                <li key={item.id}>
+                  <h3>{item.title}</h3>
+                  <div className="arcitile-info-wrap">
+                    <div className="left-info">
+                      <span>阅读次数:{item.visitors}</span>
+                    </div>
+                    <div className="right-info">
+                      <span>时间:{item.time}</span>
+                    </div>
                   </div>
-                  <div className="right-info">
-                    <span>时间:{item.time}</span>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </Fragment>
     );
@@ -62,9 +62,7 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => {
-  return {
-
-  };
+  return {};
 };
 export default connect(
   mapStateToProps,

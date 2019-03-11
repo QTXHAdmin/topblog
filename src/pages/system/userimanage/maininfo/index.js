@@ -1,10 +1,41 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import {Button} from 'antd';
+import { Link } from 'react-router-dom';
+import { Button, Modal, Card } from 'antd';
 import './style.less';
 class Maininfo extends Component {
+  state = {
+    ModalText: 'Content of the modal',
+    visible: false,
+    confirmLoading: false
+  };
+
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = () => {
+    this.setState({
+      ModalText: 'The modal will be closed after two seconds',
+      confirmLoading: true
+    });
+    setTimeout(() => {
+      this.setState({
+        visible: false,
+        confirmLoading: false
+      });
+    }, 2000);
+  };
+  handleCancel = () => {
+    console.log('Clicked cancel button');
+    this.setState({
+      visible: false
+    });
+  };
   render() {
+    const { visible, confirmLoading } = this.state;
     return (
       <Fragment>
         <div className="personal-wrap">
@@ -42,8 +73,26 @@ class Maininfo extends Component {
               </div>
             </div>
             <div className="personmain">
-              <Link to="/personhomepage"><Button>个人主页 ></Button></Link>
-              <Link to="/editprofile"><Button>修改资料 ></Button></Link>
+              <Link to="/personhomepage">
+                <Button>个人主页 ></Button>
+              </Link>
+              <Button type="primary" onClick={this.showModal}>
+                修改资料
+              </Button>
+              <Modal
+                title="修改资料"
+                visible={visible}
+                onOk={this.handleOk}
+                confirmLoading={confirmLoading}
+                onCancel={this.handleCancel}
+              >
+                <Card
+                  // title="修改资料"
+                  style={{ width: 450 }}
+                >
+                  这里放表单
+                </Card>
+              </Modal>
             </div>
           </div>
         </div>

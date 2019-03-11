@@ -8,16 +8,24 @@ class Homepageheader extends Component {
       <Fragment>
         <ul className="nav clearfix">
           <li>
-            <Link to="/personhomepage/blog"><span>博客</span></Link>
+            <Link to="/personhomepage/blog">
+              <span>博客</span>
+            </Link>
           </li>
           <li>
-            <Link to="/personhomepage/pubsource"><span>资源</span></Link>
+            <Link to="/personhomepage/pubsource">
+              <span>资源</span>
+            </Link>
           </li>
           <li>
-            <Link to="/personhomepage/pubcard"><span>帖子</span></Link>
+            <Link to="/personhomepage/pubcard">
+              <span>帖子</span>
+            </Link>
           </li>
           <li>
-            <Link to="/personhomepage/question"><span>问答</span></Link>
+            <Link to="/personhomepage/question">
+              <span>问答</span>
+            </Link>
           </li>
         </ul>
       </Fragment>
