@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import Headerr from '../../../components/header';
 import Navbar from './components/navbar/navbar';
 import Topbar from './components/topbar/topbar';
 import Maincontent from './components/maincontent/maincontent';
 import Btns from './components/btns/btns';
+import Writeblog from '../writeblog';
 import './style.less';
 import { Layout } from 'antd';
 const { Content } = Layout;
@@ -24,11 +26,23 @@ class Manageblog extends Component {
               }}
             >
               <div
-                style={{ padding: 24, background: '#fff', textAlign: 'center' }}
+                style={{height:"100%", padding: 24, background: '#fff', textAlign: 'center' }}
               >
-                <Topbar />
+                <Route exact path="/manageblog/writeblog" component={Writeblog} />
+                {/* <Topbar />
                 <Btns />
-                <Maincontent />
+                <Maincontent /> */}
+                <Route
+                  exact
+                  path="/manageblog/arcitlemanage"
+                  render={() => (
+                    <Fragment>
+                      <Topbar />
+                      <Btns />
+                      <Maincontent />
+                    </Fragment>
+                  )}
+                />
               </div>
             </Content>
             <footer className="footer">
