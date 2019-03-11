@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route,Redirect } from 'react-router-dom';
 import Headerr from '../../../components/header';
 import Navbar from './components/navbar/navbar';
 import Topbar from './components/topbar/topbar';
@@ -28,6 +28,7 @@ class Manageblog extends Component {
               <div
                 style={{height:"100%", padding: 24, background: '#fff', textAlign: 'center' }}
               >
+                <Route path="/manageblog" render={()=><Redirect to='/manageblog/arcitlemanage'/>}/>
                 <Route exact path="/manageblog/writeblog" component={Writeblog} />
                 {/* <Topbar />
                 <Btns />
