@@ -3,6 +3,7 @@ import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 const { Sider } = Layout;
+
 class Navbar extends Component {
   render() {
     return (
@@ -61,7 +62,6 @@ class Navbar extends Component {
               <Icon type="shop" />
               <span className="nav-text">博客设置</span>
             </Menu.Item>
-            {/* <div className="erweima">客服</div> */}
           </Menu>
         </Sider>
       </Fragment>

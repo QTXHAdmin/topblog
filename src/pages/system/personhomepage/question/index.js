@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import Navbar from '../components/navbar';
 import { ConfigProvider, Table } from 'antd';
+import Navbar from '../components/navbar';
 import './style.less';
 class Question extends Component {
   state = {

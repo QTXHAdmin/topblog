@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { actionCreator } from './store';
-import './style.less';
-import Moment from '../moment';
 import { actionCreator as loginActionCreators } from '../../pages/login/store';
+import Moment from '../moment';
+import './style.less';
 class Header extends Component {
   render() {
     const {

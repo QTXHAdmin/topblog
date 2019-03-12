@@ -12,7 +12,12 @@ class Maincontent extends Component {
     store.dispatch(actionCreator.getarticles());
   }
   render() {
-    const { showDeleteConfirm, articleslist, handleStick,getItemInfo } = this.props;
+    const {
+      showDeleteConfirm,
+      articleslist,
+      handleStick,
+      getItemInfo
+    } = this.props;
     return (
       <Fragment>
         <ul className="arcitle-list-wrap">
@@ -29,7 +34,11 @@ class Maincontent extends Component {
                   </div>
                   <div className="right-info">
                     <Link to="/articledetail">
-                      <Button size="small" type="primary" onClick={()=>getItemInfo(item._id)}>
+                      <Button
+                        size="small"
+                        type="primary"
+                        onClick={() => getItemInfo(item._id)}
+                      >
                         查看
                       </Button>
                     </Link>
@@ -38,7 +47,7 @@ class Maincontent extends Component {
                       置顶
                     </Button>
                     <Button
-                      onClick={() => showDeleteConfirm(index)}
+                      onClick={() => showDeleteConfirm(item._id)}
                       style={{ color: 'red' }}
                       size="small"
                       type="dashed"
@@ -59,30 +68,28 @@ class Maincontent extends Component {
 const mapStateToProps = state => {
   return {
     articleslist: state.getIn(['manageblog', 'articleslist'])
-    // articleslist: state.articleslist
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    showDeleteConfirm(index) {
+    showDeleteConfirm(id) {
       confirm({
         title: '确定要删除吗',
         okText: '确定',
         okType: 'danger',
         cancelText: '取消',
         onOk() {
-          // console.log(index);
-          dispatch(actionCreator.deleteitem(index));
+          dispatch(actionCreator.deleteitem(id));
         },
         onCancel() {
-          console.log(index);
+          console.log(id);
         }
       });
     },
     handleStick(index) {
       dispatch(actionCreator.handleStick(index));
     },
-    getItemInfo(id){
+    getItemInfo(id) {
       console.log(id);
       dispatch(actionCreator.getiteminfo(id));
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './style.less';
 import { Menu, Icon, Switch } from 'antd';
+import './style.less';
 const { SubMenu } = Menu;
 
 class Leftnav extends Component {
