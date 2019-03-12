@@ -5,9 +5,16 @@ import Header from '../../../components/header';
 import './style.less';
 import { Checkbox, Button } from 'antd';
 import BlogLeft from '../../../components/blogleftmsg';
+import store from '../../../store';
+import { actionCreator } from './store';
 class Myblog extends Component {
+  componentDidMount() {
+    store.dispatch(actionCreator.getInfoList());
+  }
+
   render() {
-    const { loginStatus } = this.props;
+    const { loginStatus, getinfolist } = this.props;
+    console.log(getinfolist);
     if (loginStatus) {
       return (
         <Fragment>
@@ -40,7 +47,40 @@ class Myblog extends Component {
                   <Button icon="search">RSS订阅</Button>
                 </div>
               </div>
-              <div className="myBlogwrap" />
+              <div className="myBlogwrap">
+                <ul className="arcitle-list-wrap">
+                  {this.props.getinfolist.map((item, index) => {
+                    return (
+                      <li key={item._id}>
+                        <h3>{item.title}</h3>
+                        <div className="arcitile-info-wrap">
+                          <div className="left-info">
+                            <span>原创</span>
+                            <span>时间:{item.time}</span>
+                            <span>人数:{item.visitors}</span>
+                            <span>评论数:{item.commits}</span>
+                          </div>
+                          <div className="right-info">
+                            <Button size="small" type="primary">
+                              查看
+                            </Button>
+
+                            {/* <Button size="small">禁止评论</Button>
+                            <Button size="small">置顶</Button> */}
+                            {/* <Button
+                              style={{ color: 'red' }}
+                              size="small"
+                              type="dashed"
+                            >
+                              删除
+                            </Button> */}
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
         </Fragment>
@@ -52,6 +92,7 @@ class Myblog extends Component {
 }
 const mapStateToProps = state => {
   return {
+    getinfolist: state.getIn(['myblog', 'getinfolist']),
     loginStatus: state.getIn(['login', 'login'])
   };
 };

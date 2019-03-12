@@ -9,12 +9,12 @@ import './style.less';
 class Arcitledetail extends Component {
   componentDidMount() {
     store.dispatch(actionCreator.getarticleid(this.props.arcitleid));
-      // if(this.props.onearcitle){
-      //   store.dispatch(actionCreator.getonearcitle());
-      // }
+    // if(this.props.onearcitle){
+    //   store.dispatch(actionCreator.getonearcitle());
+    // }
   }
   render() {
-    const { onearcitle ,one} = this.props;
+    const { onearcitle, one } = this.props;
     console.log(one);
     return (
       <Fragment>
@@ -29,7 +29,7 @@ class Arcitledetail extends Component {
                   <span>{onearcitle.title}</span>
                 </h3>
                 <p>
-                  <span></span>
+                  <span />
                   <span>名字</span>
                   <span>阅读数：28</span> <span>更多</span>
                 </p>
