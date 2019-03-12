@@ -12,13 +12,13 @@ class Maincontent extends Component {
     store.dispatch(actionCreator.getarticles());
   }
   render() {
-    const { showDeleteConfirm, articleslist, handleStick } = this.props;
+    const { showDeleteConfirm, articleslist, handleStick,getItemInfo } = this.props;
     return (
       <Fragment>
         <ul className="arcitle-list-wrap">
           {articleslist.map((item, index) => {
             return (
-              <li key={item.id}>
+              <li key={item._id}>
                 <h3>{item.title}</h3>
                 <div className="arcitile-info-wrap">
                   <div className="left-info">
@@ -28,8 +28,8 @@ class Maincontent extends Component {
                     <span>评论数:{item.commits}</span>
                   </div>
                   <div className="right-info">
-                    <Link to="/maincontent">
-                      <Button size="small" type="primary">
+                    <Link to="/articledetail">
+                      <Button size="small" type="primary" onClick={()=>getItemInfo(item._id)}>
                         查看
                       </Button>
                     </Link>
@@ -81,6 +81,10 @@ const mapDispatchToProps = dispatch => {
     },
     handleStick(index) {
       dispatch(actionCreator.handleStick(index));
+    },
+    getItemInfo(id){
+      console.log(id);
+      dispatch(actionCreator.getiteminfo(id));
     }
   };
 };

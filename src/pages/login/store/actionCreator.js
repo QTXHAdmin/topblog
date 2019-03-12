@@ -1,8 +1,9 @@
 import * as constants from './constants';
 import axios from 'axios';
-const changeLogin = () => ({
+const changeLogin = (userdata) => ({
   type: constants.CHANGE_LOGIN,
-  value: true
+  value: true,
+  userdata
 });
 // const registeuser = () => ({
 //   type: constants.REGIS_LOGIN,
@@ -23,14 +24,16 @@ export const logout = () => ({
 export const login = obj => {
   return dispatch => {
     axios
-      .get('/api/login.json')
-      // .post('http://192.168.1.119:8088/login', obj)
+      // .get('/api/login.json')
+      .post('http://192.168.1.119:8088/login', obj)
       .then(res => {
         const result = res.data;
-        // if (result.code === 0) {
+        const userdata = result.data[0];
+        console.log(userdata);
+        if (result.code === 0) {
           console.log('成功');
-          dispatch(changeLogin());
-        // }
+          dispatch(changeLogin(userdata));
+        }
       })
       .catch(err => {
         console.log(err);

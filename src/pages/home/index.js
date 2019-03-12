@@ -1,11 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import './style.less';
 import { Link } from 'react-router-dom';
+
 import Header from '../../components/Header/index';
+
+import { actionCreator } from './store';
+import store from '../../store';
+
 import { connect } from 'react-redux';
 import { Carousel } from 'antd';
 class Home extends Component {
+  componentDidMount() {
+    store.dispatch(actionCreator.getallarticles());
+  }
   render() {
+    const { articles } = this.props;
+    // const htmlarray = dangerouslySetInnerHTML=articles.wrap;
+    console.log(articles);
     return (
       <Fragment>
         <Header />
@@ -89,84 +100,32 @@ class Home extends Component {
               </div>
               <div className="blog-list-wrap">
                 <ul className="blog-list">
-                  <li>
-                    <h3>我在阿里做了5年招聘</h3>
-                    <p>
-                      前阵子，我和阿里的薪酬福利专家M同学聊了一下午，M同学做了9年薪酬，和我们吐槽了很多薪酬方面的现象，
-                    </p>
-                    <div className="bottom-wrap">
-                      <div className="bottom-left">
-                        <Link to="/home">
-                          <span>头像 zhanghe</span>
-                        </Link>
-                        <Link to="/home">
-                          <span>程序人生</span>
-                        </Link>
-                        <span className="timer">1天前</span>
-                      </div>
-                      <div className="bottom-right">
-                        <Link to="/home">
-                          <span>阅读数 : 200</span>
-                        </Link>
+                  {articles.map((item, index) => (
+                    <li key={item._id}>
+                      <h3>{item.title}</h3>
+                      <p dangerouslySetInnerHTML={{ __html: item.wrap }} />
+                      <div className="bottom-wrap">
+                        <div className="bottom-left">
+                          <Link to="/home">
+                            <span>头像 zhanghe</span>
+                          </Link>
+                          <Link to="/home">
+                            <span>程序人生</span>
+                          </Link>
+                          <span className="timer">{item.date}</span>
+                        </div>
+                        <div className="bottom-right">
+                          <Link to="/home">
+                            <span>阅读数 : 200</span>
+                          </Link>
 
-                        <Link to="/home">
-                          <span>评论数 : 300</span>
-                        </Link>
+                          <Link to="/home">
+                            <span>评论数 : 300</span>
+                          </Link>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>我在阿里做了5年招聘</h3>
-                    <p>
-                      前阵子，我和阿里的薪酬福利专家M同学聊了一下午，M同学做了9年薪酬，和我们吐槽了很多薪酬方面的现象，
-                    </p>
-                    <div className="bottom-wrap">
-                      <div className="bottom-left">
-                        <Link to="/home">
-                          <span>头像 zhanghe</span>
-                        </Link>
-                        <Link to="/home">
-                          <span>程序人生</span>
-                        </Link>
-                        <span className="timer">1天前</span>
-                      </div>
-                      <div className="bottom-right">
-                        <Link to="/home">
-                          <span>阅读数 : 200</span>
-                        </Link>
-
-                        <Link to="/home">
-                          <span>评论数 : 300</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <h3>我在阿里做了5年招聘</h3>
-                    <p>
-                      前阵子，我和阿里的薪酬福利专家M同学聊了一下午，M同学做了9年薪酬，和我们吐槽了很多薪酬方面的现象，
-                    </p>
-                    <div className="bottom-wrap">
-                      <div className="bottom-left">
-                        <Link to="/home">
-                          <span>头像 zhanghe</span>
-                        </Link>
-                        <Link to="/home">
-                          <span>程序人生</span>
-                        </Link>
-                        <span className="timer">1天前</span>
-                      </div>
-                      <div className="bottom-right">
-                        <Link to="/home">
-                          <span>阅读数 : 200</span>
-                        </Link>
-
-                        <Link to="/home">
-                          <span>评论数 : 300</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </li>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -178,7 +137,9 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    articles: state.getIn(['home', 'articles'])
+  };
 };
 const mapDispatchToProps = dispatch => {
   return {};
