@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Avatar } from 'antd';
-
+import './style.less';
 class index extends Component {
   render() {
     return (

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Header from '../../../components/Header/index';
+import Header from '../../../components/header';
 import './style.less';
 import { Checkbox, Button } from 'antd';
 import BlogLeft from '../../../components/blogleftmsg';

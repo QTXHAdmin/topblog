@@ -1,41 +1,113 @@
-.main{
-  width:1190px;
-  margin:0 auto;
-  .detail-wrapper{
-    padding:40px;
-    margin-top:30px;
-    width:800px;
-    float:right;
-    background: #fff;
-    .detail-top{
-      h3{
-        .articletype{
-          height:30px;
-          width:30px;
+.main {
+  width: 1190px;
+  margin: 0 auto;
+  position: relative;
+
+  .wrap {
+    padding-top: 30px
+  }
+
+  .detail-wrapper {
+    margin-top: 30px;
+    position: absolute;
+    width: 800px;
+    top: 0;
+    right: 0;
+    margin-bottom: 10px;
+
+    .detail-top {
+      padding: 40px;
+      background: #fff;
+      margin-bottom: 5px;
+
+      h3 {
+        .articletype {
+          height: 30px;
+          width: 30px;
           text-align: center;
           line-height: 30px;
           font-size: 12px;
-          border:1px solid #ccc;
+          border: 1px solid #ccc;
           display: inline-block;
           border-radius: 50%;
-          margin-right:20px;
+          margin-right: 20px;
         }
       }
-      p{
-        span{
-          margin-right:30px;
+
+      p {
+        span {
+          margin-right: 30px;
           font-size: 12px;
         }
+
         border-bottom:1px solid #ccc;
         padding-bottom:10px;
       }
     }
-    .content-box{
-      p{
+
+    .content-box {
+
+      p {
         font-size: 12px;
       }
-      .main-content{
-        margin-top:30px;
+
+      .main-content {
+        margin-top: 30px;
+
+      }
+    }
+  }
+
+  .ad-wrapper {
+    padding: 40px;
+    background: #fff;
+    margin-bottom: 5px;
+  }
+
+  .commentarea {
+    padding-top: 20px;
+    padding-left: 40px;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+
+    span {
+      margin-right: 20px;
+    }
+
+    .comment-content {
+      margin-top: 20px;
+
+      ul {
+        li {
+          span {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .recommend-wrap {
+    background: #fff;
+    padding: 20px;
+
+    ul {
+      li {
+        border-bottom: 1px solid #ccc;
+
+        .recommend-item {
+          display: flex;
+          justify-content: space-between;
+
+          span {
+            font-size: 12px;
+          }
+        }
+
+        .recommend-userinfo {
+          display: flex;
+          justify-content: space-between;
+        }
       }
     }
   }

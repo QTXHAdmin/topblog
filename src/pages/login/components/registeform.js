@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Checkbox, Button, Form, Input, Radio } from 'antd';
 import { actionCreator } from '../store';
 import './registeformstyle.less';
-import { Checkbox, Button, Form, Input, Radio } from 'antd';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const formItemLayout = {

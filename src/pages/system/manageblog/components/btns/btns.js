@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import './btns.less';
 import { Select, Input } from 'antd';
+import './btns.less';
 const Option = Select.Option;
 const Search = Input.Search;
 class Btns extends Component {

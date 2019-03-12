@@ -1,22 +1,17 @@
 import React, { Component, Fragment } from 'react';
-import './style.less';
 import { Link } from 'react-router-dom';
-
-import Header from '../../components/Header/index';
-
-import { actionCreator } from './store';
-import store from '../../store';
-
 import { connect } from 'react-redux';
 import { Carousel } from 'antd';
+import { actionCreator } from './store';
+import store from '../../store';
+import Header from '../../components/header';
+import './style.less';
 class Home extends Component {
   componentDidMount() {
     store.dispatch(actionCreator.getallarticles());
   }
   render() {
     const { articles } = this.props;
-    // const htmlarray = dangerouslySetInnerHTML=articles.wrap;
-    console.log(articles);
     return (
       <Fragment>
         <Header />

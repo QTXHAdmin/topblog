@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
-import './style.less';
-import { actionCreator } from './store';
-// import htmlToDraft from 'html-to-draftjs';
-import draftToHtml from 'draftjs-to-html';
 import { Input, Button } from 'antd';
+import draftToHtml from 'draftjs-to-html';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+// import htmlToDraft from 'html-to-draftjs';
+import { actionCreator } from './store';
+import './style.less';
 class Writeblog extends Component {
   state = {
     editorState: EditorState.createEmpty()

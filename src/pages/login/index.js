@@ -1,22 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Tabs, Form } from 'antd';
 import './style.less';
 import Moment from '../../components/moment';
 import Loginform from './components/loginform';
 import Registeform from './components/registeform';
-import { Tabs, Form } from 'antd';
 const TabPane = Tabs.TabPane;
 class Login extends Component {
+  //设置activeKey的默认值
   state = { activeKey: '1' };
-
+  //把tabs的activeKey值动态绑定
   onChangeActiveKey = activeKey => {
     this.setState({ activeKey });
   };
   render() {
     const { loginStatus } = this.props;
-    console.log(loginStatus);
-    if (!loginStatus) {
+    if (!loginStatus) { 
       return (
         <Fragment>
           <div className="wrapper">
@@ -28,8 +28,10 @@ class Login extends Component {
             </div>
             <div className="login-wrapper">
               <Tabs
-                //默认页签的key值
+                //当tabs发生变化的时候通过change事件改变activeKey的值
+                //改功能用于注册成功跳转到登录tabs
                 onChange={this.onChangeActiveKey}
+                //默认页签的key值
                 activeKey={this.state.activeKey}
                 style={{
                   background: '#fff',
@@ -45,13 +47,11 @@ class Login extends Component {
                     <Loginform />
                   </div>
                 </TabPane>
-
                 {/* 注册 */}
                 <TabPane tab="注册账号" key="2">
                   <div className="input-border">
                     <p className="prompt-msg">新用户</p>
                     <Registeform onChangeActiveKey={this.onChangeActiveKey} />
-                    {/* <Registeform /> */}
                   </div>
                 </TabPane>
               </Tabs>

@@ -5,10 +5,6 @@ const changeLogin = (userdata) => ({
   value: true,
   userdata
 });
-// const registeuser = () => ({
-//   type: constants.REGIS_LOGIN,
-//   value: true
-// });
 export const usernamechange = value => ({
   type: constants.USER_NAME_CHANGE,
   value
@@ -50,7 +46,6 @@ export const registe = obj => {
         console.log(result);
         if (result.code === 0) {
           console.log('添加用户成功');
-          // dispatch(registeuser());
         }
       });
   };
