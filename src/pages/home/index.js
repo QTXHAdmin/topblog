@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import './style.less';
 import { Link } from 'react-router-dom';
+
+import Header from '../../components/Header/index';
+
 import { actionCreator } from './store';
 import store from '../../store';
-import Header from '../../components/header';
+
 import { connect } from 'react-redux';
 import { Carousel } from 'antd';
 class Home extends Component {

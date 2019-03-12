@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import Headers from '../../../components/header';
+import Headers from '../../../components/Header/index';
 import Homepageheader from './components/homepagehead';
 import Homepageinfo from './components/homepageinfo';
 import Blog from './blog';

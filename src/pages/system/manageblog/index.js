@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route,Redirect } from 'react-router-dom';
-import Headerr from '../../../components/header';
+import { Route, Redirect } from 'react-router-dom';
+import Headerr from '../../../components/Header/index';
 import Navbar from './components/navbar/navbar';
 import Topbar from './components/topbar/topbar';
 import Maincontent from './components/maincontent/maincontent';
@@ -28,8 +28,16 @@ class Manageblog extends Component {
               <div
                 style={{ padding: 24, background: '#fff', textAlign: 'center' }}
               >
-                <Route path="/manageblog" render={()=><Redirect to='/manageblog/arcitlemanage'/>}/>
-                <Route exact path="/manageblog/writeblog" component={Writeblog} />
+                <Route
+                  path="/manageblog"
+                  render={() => <Redirect to="/manageblog/arcitlemanage" />}
+                />
+                <Route
+                  exact
+                  path="/manageblog/writeblog"
+                  component={Writeblog}
+                />
+
                 <Route
                   exact
                   path="/manageblog/arcitlemanage"
