@@ -26,16 +26,17 @@ class Manageblog extends Component {
               }}
             >
               <div
-
-              
-                {/* <Topbar />
-                <Btns />
-                <Maincontent /> */}
-
                 style={{ padding: 24, background: '#fff', textAlign: 'center' }}
               >
-                <Route path="/manageblog" render={()=><Redirect to='/manageblog/arcitlemanage'/>}/>
-                <Route exact path="/manageblog/writeblog" component={Writeblog} />
+                <Route
+                  path="/manageblog"
+                  render={() => <Redirect to="/manageblog/arcitlemanage" />}
+                />
+                <Route
+                  exact
+                  path="/manageblog/writeblog"
+                  component={Writeblog}
+                />
 
                 <Route
                   exact

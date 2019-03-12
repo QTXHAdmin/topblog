@@ -8,7 +8,6 @@ import { reducer as manageblogReducer } from '../pages/system/manageblog/store';
 import { reducer as personhomepageReducer } from '../pages/system/personhomepage/store';
 import { reducer as myblogReducer } from '../pages/system/myblog/store';
 
-import { reducer as personhomepageReducer } from '../pages/system/personhomepage/store';
 import { reducer as writeblogReducer } from '../pages/system/writeblog/store';
 
 const reducer = combineReducers({
