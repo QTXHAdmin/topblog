@@ -8,8 +8,9 @@ import './maincontent.less';
 const confirm = Modal.confirm;
 
 class Maincontent extends Component {
+
   componentDidMount() {
-    store.dispatch(actionCreator.getarticles());
+      store.dispatch(actionCreator.getarticles());
   }
   render() {
     const {
@@ -18,6 +19,7 @@ class Maincontent extends Component {
       handleStick,
       getItemInfo
     } = this.props;
+    console.log(articleslist)
     return (
       <Fragment>
         <ul className="arcitle-list-wrap">
@@ -38,6 +40,7 @@ class Maincontent extends Component {
                         size="small"
                         type="primary"
                         onClick={() => getItemInfo(item._id)}
+                        // onClick={() => getItemInfo(index)}
                       >
                         查看
                       </Button>

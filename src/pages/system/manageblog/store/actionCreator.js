@@ -13,6 +13,10 @@ const handlestick = index => ({
   type: constants.STICK,
   index
 });
+const pushonearticle = data => ({
+  type: constants.PUSH_ONE_ARTICLE,
+  data
+});
 const getonearcitle = data => ({
   type: constants.GET_ONE_ARCITLE,
   data
@@ -60,5 +64,15 @@ export const getarticleid = id => {
 export const handleStick = index => {
   return dispatch => {
     dispatch(handlestick(index));
+  };
+};
+//添加请求
+export const publishblog = obj => {
+  return dispatch => {
+    axios.post('http://192.168.1.119:8088/addblog', obj).then(res => {
+      const data = res.data.data;
+      console.log(data);
+      dispatch(pushonearticle(data));
+    });
   };
 };

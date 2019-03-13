@@ -9,8 +9,17 @@ import Maincontent from './components/maincontent/maincontent';
 import Btns from './components/btns/btns';
 import Writeblog from '../writeblog';
 import './style.less';
+import store from '../../../store';
+import {actionCreator} from './store';
 const { Content } = Layout;
 class Manageblog extends Component {
+  componentDidMount(){
+    const timer= setTimeout(()=>{
+      store.dispatch(actionCreator.getarticles());
+    });
+    clearInterval(timer);
+  }
+
   render() {
     return (
       <Fragment>
@@ -63,7 +72,8 @@ class Manageblog extends Component {
   }
 }
 const mapStateToProps = state => {
-  return {};
+  return {
+  };
 };
 const mapDispatchToProps = dispatch => {
   return {};

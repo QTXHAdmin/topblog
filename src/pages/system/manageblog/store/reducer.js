@@ -20,6 +20,11 @@ export default (state = defaultState, action) => {
       return state.set('arcitleid', action.id);
     case constants.GET_ONE_ARCITLE:
       return state.set('onearcitle', action.data);
+    case constants.PUSH_ONE_ARTICLE:
+    const pushonearcitle = JSON.parse(JSON.stringify(state));
+    pushonearcitle.articleslist.push(action.data);
+    return pushonearcitle;
+      // return state.set('onearcitle', action.data);
     //模拟删除数据时用到的删除方法
     // case constants.DELETE_ARTICLES:
     //   const newState = JSON.parse(JSON.stringify(state));
