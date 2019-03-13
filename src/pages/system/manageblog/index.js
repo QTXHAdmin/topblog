@@ -8,11 +8,13 @@ import Topbar from './components/topbar/topbar';
 import Maincontent from './components/maincontent/maincontent';
 import Btns from './components/btns/btns';
 import Writeblog from '../writeblog';
+import Classnamage from '../classmanage';
 import './style.less';
 import store from '../../../store';
 import {actionCreator} from './store';
 const { Content } = Layout;
 class Manageblog extends Component {
+  //模拟
   componentDidMount(){
     const timer= setTimeout(()=>{
       store.dispatch(actionCreator.getarticles());
@@ -58,6 +60,11 @@ class Manageblog extends Component {
                         <Maincontent />
                       </Fragment>
                     )}
+                  />
+                   <Route
+                    exact
+                    path="/manageblog/classmanage"
+                    component={Classnamage}
                   />
                 </Switch>
               </div>

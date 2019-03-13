@@ -78,18 +78,26 @@ class Home extends Component {
             </div>
             <div className="content-right">
               <div className="swiper">
-                <Carousel autoplay>
+                <Carousel autoplay >
                   <div>
-                    <h3>1</h3>
+                      <h3>
+                       <img style={{width:'100%',height:'169px'}} src="/icon/lundun.jpg" alt=""/>
+                      </h3>
                   </div>
                   <div>
-                    <h3>2</h3>
+                    <h3>
+                      <img style={{width:'100%',height:'169px'}} src="/icon/lundunyan.jpg" alt=""/>
+                    </h3>
                   </div>
                   <div>
-                    <h3>3</h3>
+                    <h3>
+                      <img style={{width:'100%',height:'169px'}} src="/icon/tieta.jpg" alt=""/>
+                    </h3>
                   </div>
                   <div>
-                    <h3>4</h3>
+                    <h3>
+                      <img style={{width:'100%',height:'169px'}} src="/icon/lundun.jpg" alt=""/>
+                    </h3>
                   </div>
                 </Carousel>
               </div>

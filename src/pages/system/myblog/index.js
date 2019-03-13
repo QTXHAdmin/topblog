@@ -26,9 +26,9 @@ class Myblog extends Component {
                
                 管理博客
               </button> */}
-              <Button icon="setting" className="myblogbtn">
+              {/* <Button icon="setting" className="myblogbtn">
                 管理博客
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div className="myBlogBody">
@@ -44,7 +44,7 @@ class Myblog extends Component {
                     <li>按更新时间</li>
                     <li>按访问量</li>
                   </ul>
-                  <Button icon="search">RSS订阅</Button>
+                  {/* <Button icon="search">RSS订阅</Button> */}
                 </div>
               </div>
               <div className="myBlogwrap">

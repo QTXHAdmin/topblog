@@ -35,7 +35,7 @@ class Header extends Component {
                   />
                 </CSSTransition>
                 <ul className="right-menu clearfix">
-                  <Link to="/writeblog">
+                  <Link to="/manageblog/writeblog">
                     <li>写博客</li>
                   </Link>
                   <Link to="/home">
