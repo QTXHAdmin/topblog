@@ -51,8 +51,10 @@ class Navbar extends Component {
               <span className="nav-text">评论管理</span>
             </Menu.Item>
             <Menu.Item key="7">
+              <Link to="/manageblog/classmanage">
               <Icon type="team" />
               <span className="nav-text">个人分类管理</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="8">
               <Icon type="shop" />

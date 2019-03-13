@@ -10,6 +10,7 @@ import Markedownedit from './pages/system/markedownedit';
 import Usermanage from './pages/system/userimanage';
 import Personhomepage from './pages/system/personhomepage';
 import Arcitledetail from './pages/system/arcitledetail';
+import Classmanage from './pages/system/classmanage';
 import {
   HashRouter as Router,
   Route,
@@ -49,6 +50,7 @@ class App extends Component {
           <Route path="/userimanage" component={Usermanage} />
           <Route path="/personhomepage" component={Personhomepage} />
           <Route path="/articledetail" component={Arcitledetail} />
+          <Route path="/classmanage" component={Classmanage} />
           <Route component={Nomatch} />
         </Switch>
       </Router>

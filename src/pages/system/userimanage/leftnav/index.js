@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link}from 'react-router-dom';
 import { Menu, Icon, Switch } from 'antd';
 import './style.less';
 const { SubMenu } = Menu;
@@ -57,8 +58,10 @@ class Leftnav extends Component {
               个人资料
             </Menu.Item>
             <Menu.Item key="3">
+            <Link to="/myblog">
               <Icon type="calendar" />
               我的博客
+            </Link>
             </Menu.Item>
             <Menu.Item key="4">
               <Icon type="calendar" />
