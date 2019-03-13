@@ -1,16 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import {Link,Route} from 'react-router-dom';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
-import { Input, Button } from 'antd';
+import {actionCreator as manageblogaction} from '../manageblog/store';
+import { Input, Button,message } from 'antd';
 import draftToHtml from 'draftjs-to-html';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 // import htmlToDraft from 'html-to-draftjs';
 import { actionCreator } from './store';
 import './style.less';
 class Writeblog extends Component {
+
   state = {
-    editorState: EditorState.createEmpty()
+    editorState: EditorState.createEmpty(),
   };
 
   onEditorStateChange = editorState => {
@@ -19,9 +22,8 @@ class Writeblog extends Component {
     });
   };
   render() {
-    const { editorState } = this.state;
+    const { editorState} = this.state;
     const { inputvalue, userdata } = this.props;
-
     return (
       <Fragment>
         <div className="writelog-wrapper">
@@ -44,15 +46,16 @@ class Writeblog extends Component {
             ref="txt"
           />
         </div>
+        <Link to="/empty">
         <Button
           type="primary"
           style={{ marginTop: '30px' }}
-          onClick={() =>
-            this.props.Publishblog(this.refs, inputvalue, userdata)
-          }
+          onClick={() =>this.props.Publishblog(this.refs, inputvalue, userdata,this.props)}
+          
         >
           发布博客
         </Button>
+        </Link>
       </Fragment>
     );
   }
@@ -67,7 +70,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    Publishblog(refs, inputvalue, userdata) {
+    Publishblog(refs, inputvalue, userdata,props) {
+      message.success('添加成功');
       let obj = {
         title: inputvalue,
         author: userdata.userName,
@@ -75,7 +79,7 @@ const mapDispatchToProps = dispatch => {
         del: false,
         author_id: userdata._id
       };
-      dispatch(actionCreator.publishblog(obj));
+      dispatch(manageblogaction.publishblog(obj));
     },
     inputValue(e) {
       console.log(e.target.value);

@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Modal, Card } from 'antd';
+import { Button, Modal, Card, Input } from 'antd';
 import './style.less';
+import store from '../../../../store';
+import { actionCreator } from '../store';
 class Maininfo extends Component {
+  componentDidMount() {
+    store.dispatch(actionCreator.getuserinfo());
+  }
   state = {
     ModalText: 'Content of the modal',
     visible: false,
@@ -17,6 +22,16 @@ class Maininfo extends Component {
   };
 
   handleOk = () => {
+    let obj = {
+      nicheng: this.props.nicheng,
+      name: this.props.name,
+      sex: this.props.sex,
+      birthday: this.props.birthday,
+      vocation: this.props.vocation,
+      description: this.props.description
+    };
+    console.log(obj);
+    store.dispatch(actionCreator.xiugaiuserinfo(obj));
     this.setState({
       ModalText: 'The modal will be closed after two seconds',
       confirmLoading: true
@@ -36,6 +51,22 @@ class Maininfo extends Component {
   };
   render() {
     const { visible, confirmLoading } = this.state;
+    const {
+      userinfo,
+      handleChangenicheng,
+      handlechangename,
+      handlechangesex,
+      handlechangebirth,
+      handlechangevocation,
+      handlechangedis,
+      nicheng,
+      name,
+      sex,
+      birthday,
+      vocation,
+      description
+    } = this.props;
+    console.log(userinfo);
     return (
       <Fragment>
         <div className="personal-wrap">
@@ -52,22 +83,22 @@ class Maininfo extends Component {
               <div className="detail-info">
                 <ul>
                   <li>
-                    <span>昵称 ：嘻嘻哈哈</span>
+                    <span>昵称 ：{userinfo.nicheng}</span>
                   </li>
                   <li>
-                    <span>实名 ：zhanghe</span>
+                    <span>实名 ：{userinfo.name}</span>
                   </li>
                   <li>
-                    <span>性别 ：男</span>
+                    <span>性别 ：{userinfo.sex}</span>
                   </li>
                   <li>
-                    <span>生日 ：1989-05-24</span>
+                    <span>生日 ：{userinfo.birthday}</span>
                   </li>
                   <li>
-                    <span>行业 ：万金油</span>
+                    <span>行业 ：{userinfo.vocation}</span>
                   </li>
                   <li>
-                    <span>简介 ：这是一个神奇的人</span>
+                    <span>简介 ：{userinfo.description}</span>
                   </li>
                 </ul>
               </div>
@@ -90,7 +121,47 @@ class Maininfo extends Component {
                   // title="修改资料"
                   style={{ width: 450 }}
                 >
-                  这里放表单
+                  <Input
+                    value={nicheng}
+                    onChange={handleChangenicheng}
+                    style={{ width: 200, marginBottom: 5 }}
+                    placeholder="昵称"
+                  />
+                  <br />
+                  <Input
+                    value={name}
+                    onChange={handlechangename}
+                    style={{ width: 200, marginBottom: 5 }}
+                    placeholder="实名"
+                  />
+                  <br />
+                  <Input
+                    value={sex}
+                    onChange={handlechangesex}
+                    style={{ width: 200, marginBottom: 5 }}
+                    placeholder="性别"
+                  />
+                  <br />
+                  <Input
+                    value={birthday}
+                    onChange={handlechangebirth}
+                    style={{ width: 200, marginBottom: 5 }}
+                    placeholder="生日"
+                  />
+                  <br />
+                  <Input
+                    value={vocation}
+                    onChange={handlechangevocation}
+                    style={{ width: 200, marginBottom: 5 }}
+                    placeholder="行业"
+                  />
+                  <br />
+                  <Input
+                    value={description}
+                    onChange={handlechangedis}
+                    style={{ width: 200, marginBottom: 5 }}
+                    placeholder="简介"
+                  />
                 </Card>
               </Modal>
             </div>
@@ -102,10 +173,37 @@ class Maininfo extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    userinfo: state.getIn(['usermanage', 'userinfo']),
+    nicheng: state.getIn(['usermanage', 'nicheng']),
+    name: state.getIn(['usermanage', 'name']),
+    sex: state.getIn(['usermanage', 'sex']),
+    birthday: state.getIn(['usermanage', 'birthday']),
+    vocation: state.getIn(['usermanage', 'vocation']),
+    description: state.getIn(['usermanage', 'description'])
+  };
 };
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    handleChangenicheng(e) {
+      dispatch(actionCreator.handlechangenicheng(e.target.value));
+    },
+    handlechangename(e) {
+      dispatch(actionCreator.handlechangename(e.target.value));
+    },
+    handlechangesex(e) {
+      dispatch(actionCreator.handlechangesex(e.target.value));
+    },
+    handlechangebirth(e) {
+      dispatch(actionCreator.handlechangebirth(e.target.value));
+    },
+    handlechangevocation(e) {
+      dispatch(actionCreator.handlechangevocation(e.target.value));
+    },
+    handlechangedis(e) {
+      dispatch(actionCreator.handlechangedis(e.target.value));
+    }
+  };
 };
 export default connect(
   mapStateToProps,

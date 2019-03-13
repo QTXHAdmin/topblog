@@ -7,6 +7,7 @@ import { reducer as manageblogReducer } from '../pages/system/manageblog/store';
 import { reducer as personhomepageReducer } from '../pages/system/personhomepage/store';
 import { reducer as myblogReducer } from '../pages/system/myblog/store';
 import { reducer as writeblogReducer } from '../pages/system/writeblog/store';
+import { reducer as usermanageReducer } from '../pages/system/userimanage/store';
 
 const reducer = combineReducers({
   home: homeReducer,
@@ -15,6 +16,7 @@ const reducer = combineReducers({
   manageblog: manageblogReducer,
   personhomepage: personhomepageReducer,
   myblog: myblogReducer,
-  writeblog: writeblogReducer
+  writeblog: writeblogReducer,
+  usermanage:usermanageReducer
 });
 export default reducer;

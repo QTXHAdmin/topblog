@@ -1,0 +1,31 @@
+{
+  "userinfo": [
+    {
+      "id": 1,
+      "nicheng": "嘻嘻哈哈",
+      "name": "zhanghe",
+      "sex": "男",
+      "birthday": "1121-06-78",
+      "vocation": "万金油",
+      "discription": "这是一个神奇的人"
+    },
+    {
+      "nicheng": "1",
+      "name": "2",
+      "sex": "3",
+      "birthday": "4",
+      "vocation": "5",
+      "description": "6",
+      "id": 2
+    },
+    {
+      "nicheng": "1",
+      "name": "2",
+      "sex": "3",
+      "birthday": "4",
+      "vocation": "5",
+      "description": "6",
+      "id": 3
+    }
+  ]
+}
