@@ -36,14 +36,14 @@ class Blog extends Component {
           <ul className="arcitle-list-wrap">
             {articleslist.map((item, index) => {
               return (
-                <li key={item.id}>
+                <li key={item._id}>
                   <h3>{item.title}</h3>
                   <div className="arcitile-info-wrap">
                     <div className="left-info">
-                      <span>阅读次数:{item.visitors}</span>
+                      <span>阅读次数:33</span>
                     </div>
                     <div className="right-info">
-                      <span>时间:{item.time}</span>
+                      <span>时间 : {item.lastEditTime}</span>
                     </div>
                   </div>
                 </li>

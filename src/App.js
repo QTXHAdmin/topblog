@@ -11,6 +11,10 @@ import Usermanage from './pages/system/userimanage';
 import Personhomepage from './pages/system/personhomepage';
 import Arcitledetail from './pages/system/arcitledetail';
 import Classmanage from './pages/system/classmanage';
+import Ad from './pages/ad';
+import About from './pages/about';
+import Messageboard from './pages/messageboard';
+import Comment from './pages/comment';
 import {
   HashRouter as Router,
   Route,
@@ -51,6 +55,10 @@ class App extends Component {
           <Route path="/personhomepage" component={Personhomepage} />
           <Route path="/articledetail" component={Arcitledetail} />
           <Route path="/classmanage" component={Classmanage} />
+          <Route path="/ad" component={Ad} />
+          <Route path="/about" component={About} />
+          <Route path="/messageboard" component={Messageboard} />
+          <Route path="/comment" component={Comment} />
           <Route component={Nomatch} />
         </Switch>
       </Router>

@@ -27,15 +27,15 @@ class Leftnav extends Component {
         <div className="switch-wrap">
           <Switch
             onChange={this.changeMode}
-            style={{ backgroundColor: '#f00' }}
+            style={{ backgroundColor: '#ccc' }}
           />
-          <span>改变模式</span>
+          <span style={{fontSize:14}}>改变模式</span>
           <span className="ant-divider" style={{ margin: '0 1em' }} />
           <Switch
             onChange={this.changeTheme}
-            style={{ backgroundColor: '#f00' }}
+            style={{ backgroundColor: '#787878' }}
           />
-          <span>改变主题</span>
+          <span style={{fontSize:14}}>改变主题</span>
         </div>
         <Menu
           style={{ width: 256 }}

@@ -30,7 +30,7 @@ class Arcitledetail extends Component {
                 </h3>
                 <p>
                   <span />
-                  <span>名字</span>
+                  <span>蒸蒸</span>
                   <span>阅读数：28</span> <span>更多</span>
                 </p>
                 <div className="content-box">
@@ -43,34 +43,26 @@ class Arcitledetail extends Component {
                   }
                 </div>
               </div>
-              <div className="ad-wrapper">广告位</div>
+              <div className="ad-wrapper">
+                  <img src="/ad2.jpg" style={{height:140,width:800}} alt=""/>
+              </div>
               <div className="commentarea">
-                <span>头像</span>
+                <span>
+                  <img src="/touxiang.jpg" alt="" style={{width:30,height:30}}/>
+                </span>
                 <Input placeholder="添加评论内容" style={{ width: '70%' }} />
                 <Button type="primary"> 发表评论 </Button>
                 <div className="comment-content">
                   <ul>
                     <li>
-                      <span>头像</span>
-                      <span>名字:</span>
+                      <span>
+                      <img src="/touxiang.jpg" alt="" style={{width:30,height:30}}/>
+                      </span>
+                      <span>蒸蒸</span>:
                       <span>内容</span>
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div className="recommend-wrap">
-                <ul>
-                  <li className="clearfix">
-                    <div className="recommend-item ">
-                      <h3>标题</h3>
-                      <span>阅读数：30</span>
-                    </div>
-                    <div className="recommend-userinfo">
-                      <p>一段文章描述...</p>
-                      <span>来自：作者</span>
-                    </div>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

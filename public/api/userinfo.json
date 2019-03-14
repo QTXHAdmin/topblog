@@ -7,7 +7,7 @@
       "sex": "男",
       "birthday": "1121-06-78",
       "vocation": "万金油",
-      "discription": "这是一个神奇的人"
+      "description": "Amazing!!!这是一个神奇的人"
     },
     {
       "nicheng": "1",
@@ -71,6 +71,33 @@
       "vocation": "5",
       "description": "6",
       "id": 8
+    },
+    {
+      "nicheng": "1113",
+      "name": "333",
+      "sex": "444",
+      "birthday": "55",
+      "vocation": "66",
+      "description": "777",
+      "id": 9
+    },
+    {
+      "nicheng": "发大水",
+      "name": "fsd",
+      "sex": "",
+      "birthday": "",
+      "vocation": "",
+      "description": "",
+      "id": 10
+    },
+    {
+      "nicheng": "s",
+      "name": "d",
+      "sex": "",
+      "birthday": "",
+      "vocation": "",
+      "description": "",
+      "id": 11
     }
   ]
 }

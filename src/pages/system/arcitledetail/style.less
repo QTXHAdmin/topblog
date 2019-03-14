@@ -49,17 +49,25 @@
 
       p {
         font-size: 12px;
+        padding:10px;
       }
 
       .main-content {
         margin-top: 30px;
-
+        padding:20px;
+        padding-top:0;
+        p{
+          padding:0;
+          border-bottom:0;
+          span{
+            margin-right: 0;
+          }
+        }
       }
     }
   }
 
   .ad-wrapper {
-    padding: 40px;
     background: #fff;
     margin-bottom: 5px;
   }
@@ -79,34 +87,11 @@
 
       ul {
         li {
+          height:60px;
+
           span {
             margin-right: 10px;
           }
-        }
-      }
-    }
-  }
-
-  .recommend-wrap {
-    background: #fff;
-    padding: 20px;
-
-    ul {
-      li {
-        border-bottom: 1px solid #ccc;
-
-        .recommend-item {
-          display: flex;
-          justify-content: space-between;
-
-          span {
-            font-size: 12px;
-          }
-        }
-
-        .recommend-userinfo {
-          display: flex;
-          justify-content: space-between;
         }
       }
     }
