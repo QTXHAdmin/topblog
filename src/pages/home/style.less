@@ -10,6 +10,11 @@
   .logo-wrap {
     width: 100%;
     display: flex;
+    justify-content: space-between;
+
+    .logo-left {
+      display: flex;
+    }
 
     span {
       margin-right: 10px;
@@ -47,9 +52,10 @@
 }
 
 .content {
-  margin-top: 20px;
+  margin-top: 0;
   position: relative;
   z-index: -1;
+  background: #000;
 
   .main {
     padding-left: 200px;
@@ -59,7 +65,7 @@
     .content-left {
       position: absolute;
       top: 0;
-      left: 28px;
+      left: 0;
 
       .left-nav {
         width: 160px;
@@ -67,6 +73,9 @@
         padding-left: 20px;
         box-shadow: 0px 5px 7px 2px #d9d9d9;
         border-radius: 10px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
 
         li {
           height: 50px;
@@ -74,6 +83,7 @@
           font-size: 18px;
           color: #000;
           transition: all 1s ease;
+          list-style: none;
 
           &:hover {
             color: #f00;
@@ -87,7 +97,27 @@
       margin-top: 20px;
 
       .blog-list {
+        margin: 0;
+        padding: 0;
+        // max-height: 600px;
+        // overflow: auto;
+        // height:60px;
+        // overflow: hidden;
+        .arcitle {
+          height:30px;
+          overflow: hidden;
+          p {
+            max-width: 950px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+
         li {
+          height:150px;
+          overflow: hidden;
+          list-style: none;
           margin-bottom: 10px;
           background-color: #fff;
           padding: 10px 20px;
@@ -145,4 +175,9 @@
       }
     }
   }
+}
+
+.btn {
+  text-align: center;
+  margin-bottom: 100px;
 }

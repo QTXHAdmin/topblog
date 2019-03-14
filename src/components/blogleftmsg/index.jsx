@@ -7,8 +7,9 @@ class index extends Component {
       <Fragment>
         <div className="myBlogBody-l">
           <div className="l-top">
-            <Avatar size="large" icon="user" />
-            <span className="username">zhengzheng</span>
+            {/* <Avatar size="large" icon="user" /> */}
+            <img style={{height:30,width:30}} src="/touxiang.jpg" alt=""/>
+            <span className="username">蒸蒸</span>
           </div>
           <div className="l-middle">
             <ul className="l-middlelist">

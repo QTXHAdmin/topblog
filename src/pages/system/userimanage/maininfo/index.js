@@ -1,20 +1,34 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Modal, Card, Input } from 'antd';
+import { Button, Modal, Card, Input, Upload, Icon } from 'antd';
 import './style.less';
 import store from '../../../../store';
 import { actionCreator } from '../store';
 class Maininfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ModalText: 'Content of the modal',
+      visible: false,
+      confirmLoading: false,
+      previewVisible: false,
+      previewImage: '',
+      fileList: [
+        {
+          uid: '-1',
+          name: 'xxx.png',
+          status: 'done',
+          url:
+            'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+        }
+      ]
+    };
+  }
+
   componentDidMount() {
     store.dispatch(actionCreator.getuserinfo());
   }
-  state = {
-    ModalText: 'Content of the modal',
-    visible: false,
-    confirmLoading: false
-  };
-
   showModal = () => {
     this.setState({
       visible: true
@@ -49,8 +63,30 @@ class Maininfo extends Component {
       visible: false
     });
   };
+  handleuploadCancel = () => this.setState({ previewVisible: false });
+
+  handlePreview = file => {
+    this.setState({
+      previewImage: file.url || file.thumbUrl,
+      previewVisible: true
+    });
+  };
+
+  handleChange = ({ fileList }) => this.setState({ fileList });
   render() {
-    const { visible, confirmLoading } = this.state;
+    const {
+      visible,
+      confirmLoading,
+      previewVisible,
+      previewImage,
+      fileList
+    } = this.state;
+    const uploadButton = (
+      <div>
+        <Icon type="plus" />
+        <div className="ant-upload-text">Upload</div>
+      </div>
+    );
     const {
       userinfo,
       handleChangenicheng,
@@ -72,11 +108,32 @@ class Maininfo extends Component {
         <div className="personal-wrap">
           <h3>个人资料</h3>
           <div className="personal-info clearfix">
-            <div className="picture">头像</div>
+            <div className="picture">
+              <Upload
+                action="//jsonplaceholder.typicode.com/posts/"
+                listType="picture-card"
+                fileList={fileList}
+                onPreview={this.handlePreview}
+                onChange={this.handleChange}
+              >
+                {fileList.length >= 3 ? null : uploadButton}
+              </Upload>
+              <Modal
+                visible={previewVisible}
+                footer={null}
+                onCancel={this.handleuploadCancel}
+              >
+                <img
+                  alt="example"
+                  style={{ width: '100%' }}
+                  src={previewImage}
+                />
+              </Modal>
+            </div>
             <div className="right-into">
               <div className="right-info-border">
-                <p>ID:weixin_41608453</p>
-                <p>
+                <p>ID ： weixin_41608453</p>
+                <p style={{marginBottom:10}}>
                   <span>关注 3</span> <span>粉丝 1</span>
                 </p>
               </div>

@@ -1,42 +1,67 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Carousel } from 'antd';
+import { Carousel, Button } from 'antd';
+import { actionCreator as manageActionCreator } from '../system/manageblog/store';
 import { actionCreator } from './store';
 import store from '../../store';
 import Header from '../../components/header';
 import './style.less';
 class Home extends Component {
+  constructor(props){
+    super(props);
+      this.state={
+        page:-1
+      }
+  }
   componentDidMount() {
-    store.dispatch(actionCreator.getallarticles());
+    store.dispatch(actionCreator.getallarticles(this.state.page));
   }
   render() {
-    const { articles } = this.props;
+    const { articles, handleOneArcitle, getmore,getless } = this.props;
     return (
       <Fragment>
         <Header />
         <div className="header-nav-wrap ">
           <div className="main ">
             <div className="logo-wrap ">
-              {/* <img src="" alt=""/> */}
-              <span>Logoimg</span>
-              <ul className="left-menu ">
-                <Link to="/home">
-                  <li>首页</li>
+              <div className="logo-left">
+                <Link to="/userimanage">
+                  <span>
+                    <img
+                      src="/touxiang.jpg"
+                      alt=""
+                      style={{ width: 40, height: 40 }}
+                    />
+                  </span>
                 </Link>
-                <Link to="/home">
-                  <li>关于</li>
+                <ul className="left-menu ">
+                  <Link to="/home">
+                    <li>首页</li>
+                  </Link>
+                  <Link to="/about">
+                    <li>关于</li>
+                  </Link>
+                  <Link to="/messageboard">
+                    <li>留言板</li>
+                  </Link>
+                  <Link to="/comment">
+                    <li>评论</li>
+                  </Link>
+                  <Link to="/home">
+                    <li>交流群</li>
+                  </Link>
+                </ul>
+              </div>
+              <div className="ad">
+                <Link to="/ad">
+                  <img
+                    src="/ad1.jpg"
+                    style={{ width: 400, height: 100 }}
+                    alt=""
+                  />
                 </Link>
-                <Link to="/home">
-                  <li>留言板</li>
-                </Link>
-                <Link to="/home">
-                  <li>评论</li>
-                </Link>
-                <Link to="/home">
-                  <li>交流群</li>
-                </Link>
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -78,25 +103,41 @@ class Home extends Component {
             </div>
             <div className="content-right">
               <div className="swiper">
-                <Carousel autoplay >
-                  <div>
-                      <h3>
-                       <img style={{width:'100%',height:'169px'}} src="/icon/lundun.jpg" alt=""/>
-                      </h3>
-                  </div>
+                <Carousel autoplay>
                   <div>
                     <h3>
-                      <img style={{width:'100%',height:'169px'}} src="/icon/lundunyan.jpg" alt=""/>
+                      <img
+                        style={{ width: '100%', height: '169px' }}
+                        src="/icon/lundun.jpg"
+                        alt=""
+                      />
                     </h3>
                   </div>
                   <div>
                     <h3>
-                      <img style={{width:'100%',height:'169px'}} src="/icon/tieta.jpg" alt=""/>
+                      <img
+                        style={{ width: '100%', height: '169px' }}
+                        src="/icon/lundunyan.jpg"
+                        alt=""
+                      />
                     </h3>
                   </div>
                   <div>
                     <h3>
-                      <img style={{width:'100%',height:'169px'}} src="/icon/lundun.jpg" alt=""/>
+                      <img
+                        style={{ width: '100%', height: '169px' }}
+                        src="/icon/tieta.jpg"
+                        alt=""
+                      />
+                    </h3>
+                  </div>
+                  <div>
+                    <h3>
+                      <img
+                        style={{ width: '100%', height: '169px' }}
+                        src="/icon/lundun.jpg"
+                        alt=""
+                      />
                     </h3>
                   </div>
                 </Carousel>
@@ -105,12 +146,23 @@ class Home extends Component {
                 <ul className="blog-list">
                   {articles.map((item, index) => (
                     <li key={item._id}>
-                      <h3>{item.title}</h3>
-                      <p dangerouslySetInnerHTML={{ __html: item.wrap }} />
+                      <Link to="/articledetail">
+                        <h3 onClick={() => handleOneArcitle(item._id)}>
+                          {item.title}
+                        </h3>
+                      </Link>
+                      <p dangerouslySetInnerHTML={{ __html: item.wrap }} className="arcitle"/>
                       <div className="bottom-wrap">
                         <div className="bottom-left">
-                          <Link to="/home">
-                            <span>头像 zhanghe</span>
+                          <Link to="/userimanage">
+                            <span>
+                              <img
+                                src="/touxiang2.jpg"
+                                style={{ width: 30, height: 30,borderRadius:'50%',marginRight:5 }}
+                                alt=""
+                              />
+                              zhanghe
+                            </span>
                           </Link>
                           <Link to="/home">
                             <span>程序人生</span>
@@ -121,7 +173,6 @@ class Home extends Component {
                           <Link to="/home">
                             <span>阅读数 : 200</span>
                           </Link>
-
                           <Link to="/home">
                             <span>评论数 : 300</span>
                           </Link>
@@ -130,6 +181,10 @@ class Home extends Component {
                     </li>
                   ))}
                 </ul>
+              </div>
+              <div className="btn">
+                <Button onClick={()=>getless(this.props.page)} style={{marginRight:10}}>上一页</Button>
+                <Button onClick={()=>getmore(this.props.page)}>下一页</Button>
               </div>
             </div>
           </div>
@@ -141,11 +196,24 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    articles: state.getIn(['home', 'articles'])
+    articles: state.getIn(['home', 'articles']),
+    page:state.getIn(['home','page'])
   };
 };
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    handleOneArcitle(id) {
+      dispatch(manageActionCreator.getiteminfo(id));
+    },
+    getmore(page) {
+      console.log(page);
+
+      dispatch(actionCreator.getallarticles(page));
+    },
+    getless(page) {
+      dispatch(actionCreator.getlessarticles(page));
+    }
+  };
 };
 export default connect(
   mapStateToProps,

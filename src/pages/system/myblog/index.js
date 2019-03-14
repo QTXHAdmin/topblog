@@ -1,19 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Header from '../../../components/header';
 import './style.less';
 import { Checkbox, Button } from 'antd';
 import BlogLeft from '../../../components/blogleftmsg';
 import store from '../../../store';
 import { actionCreator } from './store';
+import {actionCreator as manageActionCreator} from '../manageblog/store';
 class Myblog extends Component {
   componentDidMount() {
     store.dispatch(actionCreator.getInfoList());
   }
 
   render() {
-    const { loginStatus, getinfolist } = this.props;
+    const { loginStatus, getinfolist ,lookinfo} = this.props;
     console.log(getinfolist);
     if (loginStatus) {
       return (
@@ -21,14 +23,7 @@ class Myblog extends Component {
           <Header />
           <div className="myBlogNav">
             <div className="myBlogwrap">
-              <h3 className="blogtitle">zhengzheng的博客</h3>
-              {/* <button className="myblogbtn">
-               
-                管理博客
-              </button> */}
-              {/* <Button icon="setting" className="myblogbtn">
-                管理博客
-              </Button> */}
+              <h3 className="blogtitle">蒸蒸的博客</h3>
             </div>
           </div>
           <div className="myBlogBody">
@@ -44,7 +39,6 @@ class Myblog extends Component {
                     <li>按更新时间</li>
                     <li>按访问量</li>
                   </ul>
-                  {/* <Button icon="search">RSS订阅</Button> */}
                 </div>
               </div>
               <div className="myBlogwrap">
@@ -61,19 +55,11 @@ class Myblog extends Component {
                             <span>评论数:{item.commits}</span>
                           </div>
                           <div className="right-info">
-                            <Button size="small" type="primary">
+                          <Link to="/articledetail">
+                            <Button size="small" type="primary" onClick={()=>lookinfo(item._id)}>
                               查看
                             </Button>
-
-                            {/* <Button size="small">禁止评论</Button>
-                            <Button size="small">置顶</Button> */}
-                            {/* <Button
-                              style={{ color: 'red' }}
-                              size="small"
-                              type="dashed"
-                            >
-                              删除
-                            </Button> */}
+                            </Link>
                           </div>
                         </div>
                       </li>
@@ -97,7 +83,11 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    lookinfo(id){
+      dispatch(manageActionCreator.getiteminfo(id));
+    }
+  };
 };
 export default connect(
   mapStateToProps,

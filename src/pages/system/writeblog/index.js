@@ -46,7 +46,7 @@ class Writeblog extends Component {
             ref="txt"
           />
         </div>
-        <Link to="/empty">
+        <Link to="/manageblog/arcitlemanage">
         <Button
           type="primary"
           style={{ marginTop: '30px' }}
